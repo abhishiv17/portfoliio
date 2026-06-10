@@ -315,13 +315,25 @@ export default function CVPage() {
         }
 
         /* ── Responsive scaling ── */
+        .cv-wrapper {
+          overflow-x: hidden;
+        }
+
         @media screen and (max-width: 830px) {
           .cv-page {
-            transform: scale(calc((100vw - 32px) / 794));
-            margin-bottom: calc((1123px * (calc((100vw - 32px) / 794)) - 1123px));
+            --scale: calc((100vw - 32px) / 794);
+            transform: scale(var(--scale));
+            transform-origin: top center;
+            margin-bottom: calc(-1123px * (1 - var(--scale)));
           }
         }
         @media screen and (max-width: 500px) {
+          .cv-page {
+            --scale: calc((100vw - 16px) / 794);
+            transform: scale(var(--scale));
+            transform-origin: top center;
+            margin-bottom: calc(-1123px * (1 - var(--scale)));
+          }
           .print-btn {
             padding: 10px 16px;
             font-size: 12px;

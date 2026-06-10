@@ -473,7 +473,7 @@ export default function PortfolioPage() {
   if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-zinc-100 selection:bg-blue-500/10 selection:text-blue-500">
+    <div className="min-h-screen bg-white dark:bg-black text-zinc-900 dark:text-zinc-100 selection:bg-blue-500/10 selection:text-blue-500 overflow-x-hidden">
       {/* Premium Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 dark:bg-black/70 backdrop-blur-2xl border-b border-zinc-100 dark:border-zinc-900 transition-all duration-700">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
