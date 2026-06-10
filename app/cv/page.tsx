@@ -9,7 +9,7 @@ export default function CVPage() {
     <>
       {/* Print-specific styles — A4, one page, no browser chrome */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Georgia&display=swap');
 
         @page {
           size: A4;
@@ -48,284 +48,221 @@ export default function CVPage() {
           flex-direction: column;
           align-items: center;
           padding: 24px 16px 48px;
-          font-family: 'Inter', system-ui, sans-serif;
+          font-family: 'Times New Roman', Georgia, 'Noto Serif', serif;
         }
 
         /* ── CV Page: fixed A4, scales to fit viewport ── */
-
         .cv-page {
-          width: 794px; /* A4 at 96dpi */
-          height: 1123px; /* A4 at 96dpi */
+          width: 794px;
+          height: 1123px;
           overflow: hidden;
-          font-family: 'Inter', system-ui, sans-serif;
+          font-family: 'Times New Roman', Georgia, 'Noto Serif', serif;
           background: #ffffff;
-          color: #1a1a2e;
-          padding: 0;
+          color: #000000;
+          padding: 32px 44px 28px;
           box-sizing: border-box;
           border-radius: 8px;
           box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
           transform-origin: top center;
         }
 
-        /* ── Layout Grid ── */
-        .cv-grid {
-          display: grid;
-          grid-template-columns: 200px 1fr;
-          height: 1123px;
+        /* ── Header ── */
+        .cv-header {
+          text-align: center;
+          margin-bottom: 4px;
         }
-
-        /* ── Left Sidebar ── */
-        .cv-sidebar {
-          background: #0f172a;
-          color: #e2e8f0;
-          padding: 28px 20px;
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-        }
-
-        .cv-sidebar .name {
-          font-size: 18px;
-          font-weight: 900;
-          color: #ffffff;
-          letter-spacing: -0.03em;
+        .cv-name {
+          font-size: 26px;
+          font-weight: 700;
+          color: #000000;
+          letter-spacing: 0.01em;
           line-height: 1.15;
-          margin-bottom: 2px;
+          margin: 0;
         }
-        .cv-sidebar .title-role {
-          font-size: 9px;
-          font-weight: 600;
-          color: #60a5fa;
-          text-transform: uppercase;
-          letter-spacing: 0.12em;
-          margin-bottom: 4px;
-        }
-
-        .cv-sidebar .section-title {
-          font-size: 8px;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.18em;
-          color: #60a5fa;
-          margin-bottom: 6px;
-          padding-bottom: 4px;
-          border-bottom: 1px solid #1e293b;
-        }
-
-        .cv-sidebar .contact-item {
-          font-size: 8.5px;
-          color: #cbd5e1;
+        .cv-contact-bar {
           display: flex;
-          align-items: center;
-          gap: 6px;
-          margin-bottom: 4px;
-          word-break: break-all;
-        }
-        .cv-sidebar .contact-item .icon {
-          flex-shrink: 0;
-          width: 12px;
-          height: 12px;
-          display: flex;
-          align-items: center;
           justify-content: center;
-          background: #1e293b;
-          border-radius: 3px;
-          font-size: 7px;
-        }
-
-        .cv-sidebar .skill-category {
-          margin-bottom: 8px;
-        }
-        .cv-sidebar .skill-category-title {
-          font-size: 8px;
-          font-weight: 700;
-          color: #94a3b8;
-          margin-bottom: 4px;
-        }
-        .cv-sidebar .skill-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 3px;
-        }
-        .cv-sidebar .skill-tag {
-          font-size: 7.5px;
-          font-weight: 600;
-          background: #1e293b;
-          color: #e2e8f0;
-          padding: 2px 6px;
-          border-radius: 3px;
-          white-space: nowrap;
-        }
-
-        .cv-sidebar .edu-title {
-          font-size: 9px;
-          font-weight: 700;
-          color: #f1f5f9;
-        }
-        .cv-sidebar .edu-detail {
-          font-size: 8px;
-          color: #94a3b8;
-          line-height: 1.4;
-        }
-
-        /* ── Right Main Content ── */
-        .cv-main {
-          padding: 28px 28px 20px 24px;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-        }
-
-        .cv-main .main-header {
-          border-bottom: 2px solid #0f172a;
-          padding-bottom: 10px;
-          margin-bottom: 2px;
-        }
-        .cv-main .main-name {
-          font-size: 28px;
-          font-weight: 900;
-          letter-spacing: -0.04em;
-          color: #0f172a;
-          line-height: 1;
-        }
-        .cv-main .main-title {
-          font-size: 11px;
-          font-weight: 600;
-          color: #3b82f6;
-          margin-top: 4px;
-          letter-spacing: 0.02em;
-        }
-        .cv-main .main-summary {
-          font-size: 9px;
-          color: #475569;
-          line-height: 1.55;
-          margin-top: 6px;
-          max-width: 480px;
-        }
-
-        .cv-main .section {
-          margin-bottom: 2px;
-        }
-        .cv-main .section-heading {
-          font-size: 10px;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.14em;
-          color: #0f172a;
-          padding-bottom: 4px;
-          border-bottom: 1px solid #e2e8f0;
-          margin-bottom: 8px;
-          display: flex;
           align-items: center;
-          gap: 6px;
+          flex-wrap: wrap;
+          gap: 2px;
+          font-size: 10.5px;
+          color: #333;
+          margin-top: 4px;
         }
-        .cv-main .section-heading .accent-bar {
-          width: 3px;
-          height: 12px;
-          background: #3b82f6;
-          border-radius: 2px;
+        .cv-contact-bar a {
+          color: #1a0dab;
+          text-decoration: underline;
+        }
+        .cv-contact-bar a:hover {
+          color: #0000cc;
+        }
+        .cv-contact-bar .sep {
+          margin: 0 5px;
+          color: #666;
         }
 
-        /* Experience entries */
-        .exp-entry {
-          margin-bottom: 8px;
+        /* ── Section ── */
+        .cv-section {
+          margin-bottom: 6px;
         }
-        .exp-header {
+        .cv-section-title {
+          font-size: 13px;
+          font-weight: 700;
+          color: #000;
+          text-transform: uppercase;
+          border-bottom: 1.5px solid #000;
+          padding-bottom: 2px;
+          margin-bottom: 5px;
+          letter-spacing: 0.04em;
+        }
+
+        /* ── Education ── */
+        .edu-row {
           display: flex;
           justify-content: space-between;
           align-items: baseline;
-          margin-bottom: 2px;
         }
-        .exp-title {
-          font-size: 10.5px;
+        .edu-institution {
+          font-size: 11px;
           font-weight: 700;
-          color: #0f172a;
+          color: #000;
         }
-        .exp-date {
-          font-size: 8px;
-          font-weight: 600;
-          color: #64748b;
-          background: #f1f5f9;
-          padding: 1px 6px;
-          border-radius: 3px;
-          white-space: nowrap;
+        .edu-location {
+          font-size: 11px;
+          font-weight: 700;
+          color: #000;
         }
-        .exp-role {
-          font-size: 8.5px;
-          font-weight: 600;
-          color: #3b82f6;
-          margin-bottom: 2px;
+        .edu-degree {
+          font-size: 10.5px;
+          font-style: italic;
+          color: #000;
         }
-        .exp-desc {
-          font-size: 8.5px;
-          color: #475569;
-          line-height: 1.5;
+        .edu-year {
+          font-size: 10.5px;
+          font-style: italic;
+          color: #000;
         }
 
-        /* Project entries */
+        /* ── Skills ── */
+        .skill-row {
+          font-size: 10.5px;
+          color: #000;
+          margin-bottom: 2px;
+          line-height: 1.5;
+        }
+        .skill-row strong {
+          font-weight: 700;
+        }
+
+        /* ── Projects ── */
         .proj-entry {
           margin-bottom: 6px;
         }
-        .proj-header {
-          display: flex;
-          align-items: baseline;
-          gap: 6px;
+        .proj-title-line {
+          font-size: 11px;
+          font-weight: 700;
+          color: #000;
           margin-bottom: 1px;
         }
-        .proj-name {
+        .proj-title-line a {
+          color: #1a0dab;
+          text-decoration: underline;
+          font-weight: 700;
+          font-size: 10.5px;
+        }
+        .proj-title-line a:hover {
+          color: #0000cc;
+        }
+        .proj-subtitle {
           font-size: 10px;
-          font-weight: 700;
-          color: #0f172a;
+          font-style: italic;
+          color: #333;
+          margin-bottom: 2px;
         }
-        .proj-role-tag {
-          font-size: 7px;
-          font-weight: 700;
-          color: #3b82f6;
-          background: #eff6ff;
-          padding: 1px 5px;
-          border-radius: 3px;
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
+        .proj-bullets {
+          margin: 0;
+          padding-left: 20px;
         }
-        .proj-desc {
-          font-size: 8.5px;
-          color: #475569;
+        .proj-bullets li {
+          font-size: 10px;
+          color: #000;
           line-height: 1.5;
-          margin-bottom: 3px;
+          margin-bottom: 1px;
         }
-        .proj-tech {
+        .proj-bullets li strong {
+          font-weight: 700;
+        }
+
+        /* ── Achievements ── */
+        .achieve-entry {
+          margin-bottom: 5px;
+        }
+        .achieve-title-line {
+          font-size: 11px;
+          font-weight: 700;
+          color: #000;
+          margin-bottom: 1px;
+        }
+        .achieve-title-line a {
+          color: #1a0dab;
+          text-decoration: underline;
+          font-weight: 700;
+          font-size: 10.5px;
+        }
+        .achieve-subtitle {
+          font-size: 10px;
+          font-style: italic;
+          color: #333;
+          margin-bottom: 2px;
+        }
+        .achieve-bullets {
+          margin: 0;
+          padding-left: 20px;
+        }
+        .achieve-bullets li {
+          font-size: 10px;
+          color: #000;
+          line-height: 1.5;
+          margin-bottom: 1px;
+        }
+
+        /* ── Experience ── */
+        .exp-entry {
+          margin-bottom: 5px;
+        }
+        .exp-title-line {
           display: flex;
-          flex-wrap: wrap;
-          gap: 3px;
+          justify-content: space-between;
+          align-items: baseline;
         }
-        .proj-tech span {
-          font-size: 7px;
-          font-weight: 600;
-          color: #64748b;
-          background: #f8fafc;
-          border: 1px solid #e2e8f0;
-          padding: 1px 5px;
-          border-radius: 2px;
-        }
-
-        /* Achievements */
-        .achievement-item {
-          font-size: 8.5px;
-          color: #475569;
-          line-height: 1.5;
-          padding-left: 12px;
-          position: relative;
-          margin-bottom: 4px;
-        }
-        .achievement-item::before {
-          content: '▸';
-          position: absolute;
-          left: 0;
-          color: #3b82f6;
+        .exp-title-name {
+          font-size: 11px;
           font-weight: 700;
+          color: #000;
+        }
+        .exp-title-date {
+          font-size: 10.5px;
+          font-style: italic;
+          color: #000;
+        }
+        .exp-org {
+          font-size: 10.5px;
+          font-style: italic;
+          color: #333;
+          margin-bottom: 2px;
+        }
+        .exp-bullets {
+          margin: 0;
+          padding-left: 20px;
+        }
+        .exp-bullets li {
+          font-size: 10px;
+          color: #000;
+          line-height: 1.5;
+          margin-bottom: 1px;
         }
 
-        /* Action bar */
+        /* ── Action bar ── */
         .print-bar {
           text-align: center;
           padding: 16px 0 20px;
@@ -347,7 +284,7 @@ export default function CVPage() {
           font-size: 13px;
           font-weight: 700;
           cursor: pointer;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Inter', system-ui, sans-serif;
           transition: all 0.2s;
           display: inline-flex;
           align-items: center;
@@ -367,7 +304,7 @@ export default function CVPage() {
           text-decoration: none;
           font-size: 13px;
           font-weight: 600;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Inter', system-ui, sans-serif;
           transition: color 0.2s;
           padding: 10px 16px;
           border-radius: 10px;
@@ -412,245 +349,159 @@ export default function CVPage() {
 
         {/* ═══════════════ CV PAGE ═══════════════ */}
         <div className="cv-page" ref={cvRef}>
-        <div className="cv-grid">
-          {/* ──── LEFT SIDEBAR ──── */}
-          <div className="cv-sidebar">
-            {/* Contact */}
-            <div>
-              <div className="section-title">Contact</div>
-              <div className="contact-item">
-                <span className="icon">✉</span>
-                abhishiv208@gmail.com
-              </div>
-              <div className="contact-item">
-                <span className="icon">🔗</span>
-                linkedin.com/in/abhishek-m-shivanagoudar
-              </div>
-              <div className="contact-item">
-                <span className="icon">⌨</span>
-                github.com/abhishiv17
-              </div>
-              <div className="contact-item">
-                <span className="icon">📍</span>
-                Bangalore, Karnataka, India
-              </div>
-            </div>
 
-            {/* Technical Skills */}
-            <div>
-              <div className="section-title">Technical Skills</div>
-
-              <div className="skill-category">
-                <div className="skill-category-title">Languages</div>
-                <div className="skill-tags">
-                  <span className="skill-tag">Python</span>
-                  <span className="skill-tag">TypeScript</span>
-                  <span className="skill-tag">JavaScript</span>
-                  <span className="skill-tag">C++</span>
-                  <span className="skill-tag">C</span>
-                </div>
-              </div>
-
-              <div className="skill-category">
-                <div className="skill-category-title">Frontend</div>
-                <div className="skill-tags">
-                  <span className="skill-tag">Next.js</span>
-                  <span className="skill-tag">React</span>
-                  <span className="skill-tag">Tailwind CSS</span>
-                  <span className="skill-tag">Framer Motion</span>
-                  <span className="skill-tag">Shadcn UI</span>
-                </div>
-              </div>
-
-              <div className="skill-category">
-                <div className="skill-category-title">Backend & Databases</div>
-                <div className="skill-tags">
-                  <span className="skill-tag">Node.js</span>
-                  <span className="skill-tag">Express</span>
-                  <span className="skill-tag">PostgreSQL</span>
-                  <span className="skill-tag">Supabase</span>
-                  <span className="skill-tag">MongoDB</span>
-                </div>
-              </div>
-
-              <div className="skill-category">
-                <div className="skill-category-title">DevOps & Tools</div>
-                <div className="skill-tags">
-                  <span className="skill-tag">Docker</span>
-                  <span className="skill-tag">Git/GitHub</span>
-                  <span className="skill-tag">Postman</span>
-                  <span className="skill-tag">CI/CD</span>
-                </div>
-              </div>
-            </div>
-
-
-            {/* Education */}
-            <div>
-              <div className="section-title">Education</div>
-              <div className="edu-title">B.E. in Computer Science</div>
-              <div className="edu-detail">
-                Dr. Ambedkar Institute of Technology, Bengaluru
-              </div>
-              <div className="edu-detail">2024 – 2028</div>
-              <div className="edu-detail" style={{ marginTop: 3, color: '#e2e8f0', fontWeight: 600 }}>CGPA: 9.0 (after 3rd Semester)</div>
-            </div>
-
-            {/* Hobbies */}
-            <div>
-              <div className="section-title">Hobbies</div>
-              <div className="edu-detail" style={{ marginBottom: 4 }}>▸ Music</div>
-              <div className="edu-detail" style={{ marginBottom: 4 }}>▸ Open-Source Contributing</div>
-              <div className="edu-detail" style={{ marginBottom: 4 }}>▸ gym</div>
-              <div className="edu-detail" style={{ marginBottom: 4 }}>▸ Gaming</div>
-              <div className="edu-detail">▸ Anime</div>
-            </div>
-
-          </div>
-
-          {/* ──── RIGHT MAIN ──── */}
-          <div className="cv-main">
-            {/* Header */}
-            <div className="main-header">
-              <div className="main-name">Abhishek M Shivanagoudar</div>
-              <div className="main-title">Full-Stack Software Developer </div>
-              <div className="main-summary">
-                Full-stack developer passionate about building scalable web applications, solving complex problems, and writing clean, maintainable code.
-              </div>
-            </div>
-
-            {/* Professional Experience */}
-            <div className="section">
-              <div className="section-heading">
-                <span className="accent-bar"></span>
-                Experience & Certification
-              </div>
-
-              <div className="exp-entry">
-                <div className="exp-header">
-                  <span className="exp-title">Technical Lead — GeeksforGeeks Campus Club</span>
-                  <span className="exp-date">Present</span>
-                </div>
-                <div className="exp-role">Dr. Ambedkar Institute of Technology, Bengaluru</div>
-                <div className="exp-desc">
-                  Leading technical initiatives, organizing coding workshops, mentoring peers in DSA and
-                  competitive programming, and driving open-source contributions across the campus community.
-                </div>
-              </div>
-
-              <div className="exp-entry">
-                <div className="exp-header">
-                  <span className="exp-title">Full-Stack Web Development Course</span>
-                  <span className="exp-date">Oct 2025</span>
-                </div>
-                <div className="exp-role">Apna College</div>
-                <div className="exp-desc">
-                  Comprehensive full-stack certification covering JavaScript, React, Node.js, Express,
-                  MongoDB, HTML5, and CSS3 with hands-on project-based learning.
-                </div>
-              </div>
-
-              <div className="exp-entry">
-                <div className="exp-header">
-                  <span className="exp-title">AWS Educate Introduction to Generative AI</span>
-                  <span className="exp-date">Sep 2025</span>
-                </div>
-                <div className="exp-role">Amazon Web Services (AWS)</div>
-                <div className="exp-desc">
-                  Training badge covering generative AI concepts, foundation models, and practical
-                  use cases for AI/ML on the AWS Cloud platform.
-                </div>
-              </div>
-
-            </div>
-
-            {/* Projects */}
-            <div className="section">
-              <div className="section-heading">
-                <span className="accent-bar"></span>
-                Key Projects
-              </div>
-
-              <div className="proj-entry">
-                <div className="proj-header">
-                  <span className="proj-name">SkillSwap</span>
-                  <span className="proj-role-tag">Lead Architect</span>
-                </div>
-                <div className="proj-desc">
-                  Designed and built a peer-to-peer skill exchange marketplace from the ground up.
-                  Architected the full-stack infrastructure including AI-powered skill matching with vector-based
-                  semantic search, a secure credit escrow system for fair exchanges, and real-time session
-                  scheduling with live notifications. Led all architectural decisions, database schema design,
-                  and end-to-end feature implementation.
-                </div>
-                <div className="proj-tech">
-                  <span>Next.js</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>Tailwind CSS</span><span>AI/ML</span>
-                </div>
-              </div>
-
-              <div className="proj-entry">
-                <div className="proj-header">
-                  <span className="proj-name">Cerebyte</span>
-                  <span className="proj-role-tag">Lead Architect</span>
-                </div>
-                <div className="proj-desc">
-                  Led the design and development of an AI-integrated ed-tech platform for mastering DSA.
-                  Built a sandboxed code execution engine with Docker, implemented interactive data structure
-                  visualizations, and integrated an AI-driven mentor for personalized student feedback.
-                  Managed the full project lifecycle from system design to deployment.
-                </div>
-                <div className="proj-tech">
-                  <span>TypeScript</span><span>Next.js</span><span>PostgreSQL</span><span>Docker</span><span>Tailwind CSS</span>
-                </div>
-              </div>
-
-              <div className="proj-entry">
-                <div className="proj-header">
-                  <span className="proj-name">TripNest</span>
-                  <span className="proj-role-tag">Full-Stack Developer</span>
-                </div>
-                <div className="proj-desc">
-                  Independently developed a full-scale hospitality and travel management platform. Engineered
-                  RESTful APIs with Express, implemented user authentication, built a responsive booking flow
-                  with Redux state management, and optimized MongoDB queries for high-availability performance.
-                </div>
-                <div className="proj-tech">
-                  <span>JavaScript</span><span>Node.js</span><span>Express</span><span>MongoDB</span><span>Redux</span>
-                </div>
-              </div>
-
-              <div className="proj-entry">
-                <div className="proj-header">
-                  <span className="proj-name">Control-Grid</span>
-                  <span className="proj-role-tag">Hackathon</span>
-                </div>
-                <div className="proj-desc">
-                  Built during a competitive hackathon — developed a real-time industrial monitoring dashboard.
-                  Implemented live WebSocket data streaming, designed responsive grid-based layouts for
-                  mission-critical system oversight, and collaborated under tight deadlines.
-                </div>
-                <div className="proj-tech">
-                  <span>TypeScript</span><span>React</span><span>WebSocket</span><span>SASS</span>
-                </div>
-              </div>
-
-              <div className="proj-entry">
-                <div className="proj-header">
-                  <span className="proj-name">Simon-Says</span>
-                  <span className="proj-role-tag">Frontend</span>
-                </div>
-                <div className="proj-desc">
-                  Designed and built a modernized take on the classic memory game as a frontend-focused project.
-                  Implemented high-fidelity CSS animations, low-latency DOM event handling, and a fully
-                  responsive layout ensuring smooth gameplay across all device viewports.
-                </div>
-                <div className="proj-tech">
-                  <span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>DOM API</span>
-                </div>
-              </div>
-              </div>
+          {/* ──── HEADER ──── */}
+          <div className="cv-header">
+            <h1 className="cv-name">Abhishek M Shivanagoudar</h1>
+            <div className="cv-contact-bar">
+              <span>Bangalore, Karnataka</span>
+              <span className="sep">|</span>
+              <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <span className="sep">|</span>
+              <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">Github</a>
+              <span className="sep">|</span>
+              <a href="mailto:abhishiv208@gmail.com">abhishiv208@gmail.com</a>
             </div>
           </div>
+
+          {/* ──── EDUCATION ──── */}
+          <div className="cv-section">
+            <div className="cv-section-title">EDUCATION</div>
+            <div className="edu-row">
+              <span className="edu-institution">Dr. Ambedkar Institute of Technology</span>
+              <span className="edu-location">Bangalore, Karnataka</span>
+            </div>
+            <div className="edu-row">
+              <span className="edu-degree">BE in Computer Science and Engineering (Current CGPA: 9.0)</span>
+              <span className="edu-year">2024–2028</span>
+            </div>
+          </div>
+
+          {/* ──── SKILL SET ──── */}
+          <div className="cv-section">
+            <div className="cv-section-title">SKILL SET</div>
+            <div className="skill-row">
+              <strong>Web Development (Frontend):</strong> Next.js, React, TypeScript, Tailwind CSS, HTML5, CSS3, Framer Motion, Shadcn UI
+            </div>
+            <div className="skill-row">
+              <strong>Web Development (Backend):</strong> Node.js, Express
+            </div>
+            <div className="skill-row">
+              <strong>Languages:</strong> Python, TypeScript, JavaScript, C++, C
+            </div>
+            <div className="skill-row">
+              <strong>Databases:</strong> PostgreSQL, Supabase, MongoDB
+            </div>
+            <div className="skill-row">
+              <strong>Tools &amp; DevOps:</strong> Git, GitHub, Docker, Postman, CI/CD
+            </div>
+          </div>
+
+          {/* ──── PROJECTS ──── */}
+          <div className="cv-section">
+            <div className="cv-section-title">PROJECTS</div>
+
+            {/* SkillSwap */}
+            <div className="proj-entry">
+              <div className="proj-title-line">
+                SkillSwap – Peer-to-Peer Skill Exchange Platform | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://code-carnage.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
+              </div>
+              <ul className="proj-bullets">
+                <li>Architected the entire full-stack infrastructure from scratch, leading all major <strong>technical decisions</strong> and database schema design.</li>
+                <li>Engineered <strong>AI-powered skill matching</strong> using vector-based semantic search and built a secure credit escrow system.</li>
+                <li>Implemented real-time session scheduling with live <strong>WebSocket notifications</strong> and managed end-to-end feature delivery.</li>
+                <li><strong>Tech Stack:</strong> Next.js, TypeScript, Supabase, PostgreSQL, Tailwind CSS, AI/ML</li>
+              </ul>
+            </div>
+
+            {/* Control-Grid */}
+            <div className="proj-entry">
+              <div className="proj-title-line">
+                Control-Grid – Real-Time Industrial Monitoring Dashboard | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://code-ninjas-hackzion.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
+              </div>
+              <ul className="proj-bullets">
+                <li>Developed the entire real-time monitoring dashboard under tight <strong>hackathon deadlines</strong>, delivering a polished product on time.</li>
+                <li>Implemented live <strong>WebSocket data streaming</strong> pipelines and engineered responsive grid-based layouts for mission-critical oversight.</li>
+                <li>Coordinated with teammates on architecture decisions and integration testing under time constraints.</li>
+                <li><strong>Tech Stack:</strong> TypeScript, React, WebSocket, SASS</li>
+              </ul>
+            </div>
+
+            {/* TripNest */}
+            <div className="proj-entry">
+              <div className="proj-title-line">
+                TripNest – Hospitality &amp; Travel Platform | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+              <ul className="proj-bullets">
+                <li>Independently owned the <strong>full development lifecycle</strong> of a hospitality and travel management platform.</li>
+                <li>Engineered <strong>RESTful APIs</strong> with Express, implemented secure user authentication, and built a responsive booking flow with Redux.</li>
+                <li>Optimized <strong>MongoDB queries</strong> for high-availability performance and scalable data access patterns.</li>
+                <li><strong>Tech Stack:</strong> JavaScript, Node.js, Express, MongoDB, Redux</li>
+              </ul>
+            </div>
+
+            {/* Simon-Says */}
+            <div className="proj-entry">
+              <div className="proj-title-line">
+                Simon-Says – Classic Memory Game | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+              <ul className="proj-bullets">
+                <li>Solely designed and developed a modernized memory game, crafting high-fidelity <strong>CSS animations</strong> from scratch.</li>
+                <li>Implemented low-latency <strong>DOM event handling</strong> for smooth interactions and ensured a fully responsive layout across all viewports.</li>
+                <li><strong>Tech Stack:</strong> JavaScript, HTML5, CSS3, DOM API</li>
+              </ul>
+            </div>
+
+            {/* Cerebyte – Working Project */}
+            <div className="proj-entry">
+              <div className="proj-title-line">
+                Cerebyte – AI-Integrated Ed-Tech Platform <span style={{ fontSize: '9px', fontWeight: 700, color: '#d97706', background: '#fef3c7', padding: '1px 6px', borderRadius: '3px', marginLeft: '4px' }}>Working Project</span> | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+              <ul className="proj-bullets">
+                <li>Leading the design and development of an AI-integrated ed-tech platform for mastering <strong>Data Structures &amp; Algorithms</strong>.</li>
+                <li>Building a <strong>sandboxed code execution engine</strong> with Docker and implementing interactive data structure visualizations.</li>
+                <li>Integrating an <strong>AI-driven mentor</strong> for personalized student feedback; managing the full project lifecycle.</li>
+                <li><strong>Tech Stack:</strong> TypeScript, Next.js, PostgreSQL, Docker, Tailwind CSS</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* ──── KEY ACHIEVEMENTS ──── */}
+          <div className="cv-section">
+            <div className="cv-section-title">KEY ACHIEVEMENTS</div>
+
+            <div className="achieve-entry">
+              <div className="achieve-title-line">
+                Technical Lead — GeeksforGeeks Campus Club | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </div>
+              <div className="achieve-subtitle">Dr. Ambedkar Institute of Technology, Bengaluru — Present</div>
+              <ul className="achieve-bullets">
+                <li>Leading technical initiatives, organizing coding workshops, mentoring peers in DSA and competitive programming.</li>
+                <li>Driving open-source contributions across the campus community.</li>
+              </ul>
+            </div>
+
+            <div className="achieve-entry">
+              <div className="achieve-title-line">
+                Full-Stack Web Development Certification | Apna College
+              </div>
+              <div className="achieve-subtitle">Comprehensive certification — Oct 2025</div>
+              <ul className="achieve-bullets">
+                <li>Covered JavaScript, React, Node.js, Express, MongoDB, HTML5, and CSS3 with hands-on project-based learning.</li>
+              </ul>
+            </div>
+
+            <div className="achieve-entry">
+              <div className="achieve-title-line">
+                AWS Educate — Introduction to Generative AI | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </div>
+              <div className="achieve-subtitle">Amazon Web Services (AWS) — Sep 2025</div>
+              <ul className="achieve-bullets">
+                <li>Training badge covering generative AI concepts, foundation models, and practical use cases for AI/ML on the AWS Cloud platform.</li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </>

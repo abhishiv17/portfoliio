@@ -58,10 +58,10 @@ export default function PortfolioPage() {
       icon: Briefcase,
       items: [
         { title: "SkillSwap (Lead Architect)", id: "skillswap" },
-        { title: "Cerebyte (Lead Architect)", id: "cerebyte" },
-        { title: "TripNest", id: "tripnest" },
         { title: "Control-Grid", id: "control-grid" },
+        { title: "TripNest", id: "tripnest" },
         { title: "Simon-Says", id: "simon-says" },
+        { title: "Cerebyte (Working Project)", id: "cerebyte" },
       ],
     },
     {
@@ -88,44 +88,46 @@ export default function PortfolioPage() {
       title: "SkillSwap",
       role: "Lead Architect",
       description:
-        "Designed and built a peer-to-peer skill exchange marketplace from the ground up. Architected the full-stack infrastructure including AI-powered skill matching with vector-based semantic search, a secure credit escrow system for fair exchanges, and real-time session scheduling with live notifications.",
+        "Architected the entire full-stack infrastructure from scratch, designing the database schema and leading all major technical decisions. Engineered AI-powered skill matching using vector-based semantic search, built a secure credit escrow system, and implemented real-time session scheduling with live WebSocket notifications.",
       tech: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS", "AI/ML"],
       link: "https://github.com/abhishiv17/SkillSwap",
+      mvpLink: "https://code-carnage.vercel.app/",
     },
     {
-      id: "cerebyte",
-      title: "Cerebyte",
-      role: "Lead Architect",
-      description:
-        "Led the design and development of an AI-integrated ed-tech platform for mastering DSA. Built a sandboxed code execution engine with Docker, implemented interactive data structure visualizations, and integrated an AI-driven mentor for personalized student feedback.",
-      tech: ["TypeScript", "Next.js", "PostgreSQL", "Docker", "Tailwind CSS"],
-      link: "https://github.com/abhishiv17/Cerebyte",
+      id: "control-grid",
+      title: "Control-Grid",
+      role: "Hackathon Project",
+      description: "Developed the entire real-time monitoring dashboard under tight hackathon deadlines. Implemented live WebSocket data streaming pipelines, engineered responsive grid-based layouts for mission-critical system oversight, and coordinated with teammates to deliver a polished product within the time constraint.",
+      tech: ["TypeScript", "React", "WebSocket", "SASS"],
+      link: "https://github.com/abhishiv17/Control-Grid",
+      mvpLink: "https://code-ninjas-hackzion.vercel.app/",
     },
     {
       id: "tripnest",
       title: "TripNest",
       role: "Full-Stack Developer",
       description:
-        "Independently developed a full-scale hospitality and travel management platform. Engineered RESTful APIs with Express, implemented user authentication, built a responsive booking flow with Redux state management, and optimized MongoDB queries for high-availability performance.",
+        "Independently owned the full development lifecycle — engineered RESTful APIs with Express, implemented secure user authentication, built a responsive booking flow with Redux state management, and optimized MongoDB queries for high-availability performance.",
       tech: ["JavaScript", "Node.js", "Express", "MongoDB", "Redux"],
       link: "https://github.com/abhishiv17/TripNest",
-    },
-    {
-      id: "control-grid",
-      title: "Control-Grid",
-      role: "Hackathon Project",
-      description: "Built during a competitive hackathon — developed a real-time industrial monitoring dashboard. Implemented live WebSocket data streaming, designed responsive grid-based layouts for mission-critical system oversight, and collaborated under tight deadlines.",
-      tech: ["TypeScript", "React", "WebSocket", "SASS"],
-      link: "https://github.com/abhishiv17/Control-Grid",
     },
     {
       id: "simon-says",
       title: "Simon-Says",
       role: "Frontend Specialist",
       description:
-        "Designed and built a modernized take on the classic memory game. Implemented high-fidelity CSS animations, low-latency DOM event handling, and a fully responsive layout ensuring smooth gameplay across all device viewports.",
+        "Solely designed and developed a modernized memory game — crafted high-fidelity CSS animations, implemented low-latency DOM event handling for smooth interactions, and ensured a fully responsive layout across all device viewports.",
       tech: ["JavaScript", "HTML5", "CSS3", "DOM API"],
       link: "https://github.com/abhishiv17/Simon-Says",
+    },
+    {
+      id: "cerebyte",
+      title: "Cerebyte",
+      role: "Working Project",
+      description:
+        "Leading the design and development of an AI-integrated ed-tech platform. Building a sandboxed code execution engine with Docker, implementing interactive data structure visualizations, and integrating an AI-driven mentor for personalized student feedback.",
+      tech: ["TypeScript", "Next.js", "PostgreSQL", "Docker", "Tailwind CSS"],
+      link: "https://github.com/abhishiv17/Cerebyte",
     },
   ]
 
@@ -288,14 +290,26 @@ export default function PortfolioPage() {
                 </div>
                 <h1 className="text-5xl md:text-6xl font-extrabold text-zinc-900 dark:text-white tracking-tighter">{project.title}</h1>
               </div>
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-2xl font-bold hover:opacity-90 transition-all shadow-lg active:scale-95"
-              >
-                <Github className="w-5 h-5" /> View Project Source
-              </a>
+              <div className="flex flex-wrap gap-4">
+                <a 
+                  href={project.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-2xl font-bold hover:opacity-90 transition-all shadow-lg active:scale-95"
+                >
+                  <Github className="w-5 h-5" /> View Project Source
+                </a>
+                {project.mvpLink && (
+                  <a 
+                    href={project.mvpLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 px-8 py-4 border border-zinc-200 dark:border-zinc-800 rounded-2xl font-bold hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all shadow-sm hover:shadow-md active:scale-95"
+                  >
+                    <ExternalLink className="w-5 h-5" /> Live MVP
+                  </a>
+                )}
+              </div>
             </div>
 
             <div className="grid lg:grid-cols-3 gap-12">
@@ -391,7 +405,7 @@ export default function PortfolioPage() {
             <div className="grid md:grid-cols-3 gap-6">
                {[
                  { icon: Mail, label: "Professional Email", val: "abhishiv208@gmail.com", href: "mailto:abhishiv208@gmail.com" },
-                 { icon: Linkedin, label: "LinkedIn Network", val: "Abhishek M S", href: "https://www.linkedin.com/in/abhishek-m-shivanagoudar-5441ab322" },
+                 { icon: Linkedin, label: "LinkedIn Network", val: "Abhishek M S", href: "https://www.linkedin.com/in/abhishek-m-s-5441ab322" },
                  { icon: Github, label: "GitHub Profile", val: "@abhishiv17", href: "https://github.com/abhishiv17" },
                ].map((item, i) => (
                  <a key={i} href={item.href} target="_blank" rel="noopener noreferrer" className="p-8 bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-3xl hover:shadow-xl hover:-translate-y-1 transition-all text-center group">
@@ -469,7 +483,7 @@ export default function PortfolioPage() {
              </div>
              <div className="flex flex-col min-w-0">
                <span className="font-black tracking-tight text-sm sm:text-xl leading-none truncate">ABHISHEK M SHIVANAGOUDAR</span>
-               <span className="text-[8px] sm:text-[10px] font-bold text-zinc-400 uppercase tracking-[0.3em] mt-0.5 sm:mt-1">Portfolio v2.0</span>
+               <span className="text-[8px] sm:text-[10px] font-bold text-zinc-400 uppercase tracking-[0.3em] mt-0.5 sm:mt-1">Portfolio</span>
              </div>
           </div>
           
