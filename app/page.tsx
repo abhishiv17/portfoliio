@@ -4,13 +4,15 @@ import { useState } from 'react'
 import { Github, Linkedin, Mail } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
+import SelectedWork from '@/components/SelectedWork'
+import Services from '@/components/Services'
 import CustomCursor from '@/components/CustomCursor'
 
 /* ═══════════════════════════════════════════════
    PROJECT DATA — preserved from original site
    ═══════════════════════════════════════════════ */
 
-export const projects = [
+const projects = [
   {
     id: 'skillswap',
     title: 'SkillSwap',
@@ -60,7 +62,7 @@ export const projects = [
   },
 ]
 
-export const skills = [
+const skills = [
   { category: 'Programming Languages', items: ['Python', 'TypeScript', 'JavaScript', 'C++', 'C'] },
   {
     category: 'Frontend Engineering',
@@ -76,7 +78,7 @@ export const skills = [
   },
 ]
 
-export const contactLinks = {
+const contactLinks = {
   email: 'abhishiv208@gmail.com',
   linkedin: 'https://www.linkedin.com/in/abhishek-m-s-5441ab322',
   github: 'https://github.com/abhishiv17',
@@ -108,47 +110,8 @@ export default function PortfolioPage() {
       <main>
         <Hero />
 
-        {/* ── Section anchors for future phases ── */}
-
-        <section
-          id="work"
-          aria-label="Selected Work"
-          style={{
-            padding: 'var(--space-12) var(--px-page)',
-            maxWidth: 'var(--max-w-wide)',
-            margin: '0 auto',
-            borderTop: '1px solid var(--border-primary)',
-          }}
-        >
-          <div
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'var(--text-meta)',
-              letterSpacing: 'var(--tracking-widest)',
-              textTransform: 'uppercase' as const,
-              color: 'var(--text-tertiary)',
-              marginBottom: 'var(--space-6)',
-            }}
-          >
-            01 / Selected Work
-          </div>
-          <h2
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'var(--text-h2)',
-              fontWeight: 700,
-              color: 'var(--text-primary)',
-              letterSpacing: 'var(--tracking-tight)',
-              maxWidth: 'var(--max-w-narrow)',
-            }}
-          >
-            Projects built with intent —<br />
-            <span style={{ color: 'var(--text-secondary)' }}>
-              from concept to deployment.
-            </span>
-          </h2>
-          {/* Project cards will be designed in Phase 2 */}
-        </section>
+        {/* ── Phase 2: Selected Work ── */}
+        <SelectedWork />
 
         <section
           id="services"
