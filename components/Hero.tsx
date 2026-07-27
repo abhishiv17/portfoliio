@@ -207,6 +207,7 @@ export default function Hero() {
             <a
               href="#contact"
               className="action-start-project"
+              data-cursor="visit"
               style={{
                 fontFamily: 'var(--font-body)',
                 fontSize: 'var(--text-small)',

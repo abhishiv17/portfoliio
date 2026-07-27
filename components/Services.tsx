@@ -1,56 +1,44 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 
 const servicesData = [
   {
     number: '01',
-    title: 'WEBSITES & LANDING PAGES',
-    preview: 'Responsive development • Landing pages • CMS • Deployment',
-    idealFor: 'businesses, startups, creators and products that need a strong online presence.',
+    title: 'WEBSITES &\nLANDING PAGES',
+    description: 'Fast, responsive websites for businesses, products and people who need a stronger presence online.',
     capabilities: [
-      'Responsive development',
-      'Landing pages',
       'Business websites',
-      'Portfolio websites',
-      'Marketing sites',
+      'Landing pages',
+      'Responsive development',
       'CMS integration',
       'Deployment',
     ],
-    output: 'Production-ready responsive website with clean code and high performance.',
   },
   {
     number: '02',
-    title: 'FULL-STACK WEB APPS',
-    preview: 'Frontend • APIs • Databases • Auth • Real-time systems',
-    idealFor: 'products and ideas that need functionality beyond a static website.',
+    title: 'FULL-STACK\nWEB APPS',
+    description: 'Web products where the interface is only the beginning.',
     capabilities: [
-      'Frontend development',
-      'Backend APIs',
       'Authentication',
+      'Backend APIs',
       'Databases',
       'Dashboards',
-      'Real-time functionality',
-      'Third-party integrations',
+      'Real-time systems',
       'Deployment',
     ],
-    output: 'Secure, scalable full-stack web application with intuitive responsive UI.',
   },
   {
     number: '03',
-    title: 'REDESIGNS & INTERACTIONS',
-    preview: 'UI redesign • Responsive rebuilds • GSAP motion • Performance',
-    idealFor: 'existing websites that work but feel outdated, generic, or poorly presented.',
+    title: 'REDESIGNS &\nINTERACTIONS',
+    description: "For websites that work — but don't feel as good as they should.",
     capabilities: [
       'UI redesign',
       'Responsive rebuilds',
-      'Interaction design',
-      'GSAP animation',
+      'GSAP interaction',
       'Performance improvements',
       'Frontend modernization',
-      'Design-system cleanup',
     ],
-    output: 'Modernized, high-performance web experience with refined typography and motion.',
   },
 ]
 
@@ -78,12 +66,6 @@ const processSteps = [
 ]
 
 export default function Services() {
-  const [activeService, setActiveService] = useState<number | null>(null)
-
-  const toggleService = (index: number) => {
-    setActiveService(activeService === index ? null : index)
-  }
-
   return (
     <section
       id="services"
@@ -182,9 +164,9 @@ export default function Services() {
         </div>
       </div>
 
-      {/* ── 02. CORE SERVICES (LARGE HORIZONTAL EDITORIAL ROWS) ── */}
+      {/* ── 02. THE THREE ACTUAL SERVICES (LARGE EDITORIAL CENTERPIECE ROWS) ── */}
       <div
-        className="services-list-container"
+        className="services-centerpiece-container"
         style={{
           maxWidth: 'var(--max-w-wide)',
           margin: '0 auto',
@@ -192,272 +174,129 @@ export default function Services() {
         }}
       >
         <div style={{ borderTop: '1px solid var(--border-primary)' }}>
-          {servicesData.map((service, idx) => {
-            const isExpanded = activeService === idx
-            return (
+          {servicesData.map((service) => (
+            <a
+              key={service.number}
+              href="#contact"
+              className="service-editorial-row"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '0.18fr 0.45fr 0.3fr 0.07fr',
+                gap: 'clamp(1.5rem, 3vw, 3.5rem)',
+                padding: 'clamp(2.5rem, 5vw, 4.5rem) clamp(1rem, 2vw, 2rem)',
+                borderBottom: '1px solid var(--border-primary)',
+                textDecoration: 'none',
+                color: 'var(--text-primary)',
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                alignItems: 'start',
+              }}
+            >
+              {/* Column 1: Number Metadata */}
               <div
-                key={service.number}
-                className="service-row-wrapper"
+                className="service-row-number"
                 style={{
-                  borderBottom: '1px solid var(--border-primary)',
-                  transition: 'border-color 0.3s ease',
-                  borderColor: isExpanded ? 'var(--text-primary)' : 'var(--border-primary)',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-small)',
+                  color: 'var(--accent)',
+                  fontWeight: 700,
+                  letterSpacing: 'var(--tracking-widest)',
+                  textTransform: 'uppercase' as const,
+                  transition: 'color 0.3s ease',
+                  paddingTop: '6px',
                 }}
               >
-                {/* Row Header Button */}
-                <button
-                  type="button"
-                  onClick={() => toggleService(idx)}
-                  aria-expanded={isExpanded}
-                  aria-controls={`service-detail-${idx}`}
-                  className="service-row-btn"
+                {service.number} // SERVICE
+              </div>
+
+              {/* Column 2: Dominant Title & 1-Sentence Purpose */}
+              <div
+                className="service-row-main"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 'var(--space-6)',
+                  transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                <h3
+                  className="service-row-title"
                   style={{
-                    width: '100%',
-                    textAlign: 'left',
-                    background: 'transparent',
-                    border: 'none',
-                    padding: 'clamp(1.5rem, 3.5vw, 2.5rem) 0',
-                    cursor: 'pointer',
-                    display: 'grid',
-                    gridTemplateColumns: '0.15fr 0.45fr 0.4fr',
-                    gap: 'var(--space-4)',
-                    alignItems: 'baseline',
-                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(2.2rem, 4.5vw, 4.8rem)',
+                    fontWeight: 800,
+                    lineHeight: 0.95,
+                    letterSpacing: '-0.035em',
+                    textTransform: 'uppercase' as const,
+                    margin: 0,
+                    whiteSpace: 'pre-line',
+                    transition: 'color 0.35s ease',
                   }}
                 >
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: 'var(--text-small)',
-                      color: isExpanded ? 'var(--accent)' : 'var(--text-tertiary)',
-                      fontWeight: 600,
-                      letterSpacing: 'var(--tracking-widest)',
-                      transition: 'color 0.3s ease',
-                    }}
-                  >
-                    {service.number} //
-                  </div>
-
-                  <div
-                    className="service-row-title"
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: 'clamp(1.8rem, 3.8vw, 3.2rem)',
-                      fontWeight: 800,
-                      letterSpacing: '-0.025em',
-                      lineHeight: 1.1,
-                      textTransform: 'uppercase' as const,
-                      transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease',
-                      color: isExpanded ? 'var(--accent)' : 'var(--text-primary)',
-                    }}
-                  >
-                    {service.title}
-                  </div>
-
-                  <div
-                    className="service-row-preview"
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'baseline',
-                      gap: '16px',
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontSize: 'var(--text-small)',
-                        color: 'var(--text-secondary)',
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {service.preview}
-                    </span>
-                    <span
-                      className="service-row-arrow"
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: 'var(--text-small)',
-                        fontWeight: 600,
-                        color: isExpanded ? 'var(--accent)' : 'var(--text-primary)',
-                        textTransform: 'uppercase' as const,
-                        letterSpacing: 'var(--tracking-wider)',
-                        whiteSpace: 'nowrap',
-                        transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                        display: 'inline-block',
-                      }}
-                    >
-                      {isExpanded ? 'CLOSE ✕' : 'EXPLORE ↘'}
-                    </span>
-                  </div>
-                </button>
-
-                {/* Expanded Accordion Details */}
-                {isExpanded && (
-                  <div
-                    id={`service-detail-${idx}`}
-                    className="service-accordion-body animate-hero-backwards"
-                    style={{
-                      padding: '0 0 clamp(2rem, 4vw, 3.5rem) 0',
-                      '--delay': '0s',
-                    } as React.CSSProperties}
-                  >
-                    <div
-                      className="service-detail-grid"
-                      style={{
-                        display: 'grid',
-                        gridTemplateColumns: '0.15fr 0.85fr',
-                        gap: 'var(--space-4)',
-                      }}
-                    >
-                      <div /> {/* Empty spacer aligning with row number */}
-                      <div
-                        className="service-detail-columns"
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: '1fr 1.2fr 1fr',
-                          gap: 'clamp(1.5rem, 4vw, 3.5rem)',
-                          backgroundColor: 'var(--surface-elevated)',
-                          padding: 'clamp(1.5rem, 3vw, 2.5rem)',
-                          borderLeft: '3px solid var(--accent)',
-                          borderRadius: '4px',
-                        }}
-                      >
-                        {/* Ideal For */}
-                        <div>
-                          <div
-                            style={{
-                              fontFamily: 'var(--font-mono)',
-                              fontSize: '11px',
-                              color: 'var(--text-tertiary)',
-                              textTransform: 'uppercase' as const,
-                              letterSpacing: 'var(--tracking-wider)',
-                              marginBottom: '12px',
-                            }}
-                          >
-                            IDEAL FOR //
-                          </div>
-                          <p
-                            style={{
-                              fontFamily: 'var(--font-body)',
-                              fontSize: 'var(--text-body)',
-                              lineHeight: 'var(--leading-body)',
-                              color: 'var(--text-primary)',
-                              margin: 0,
-                            }}
-                          >
-                            {service.idealFor}
-                          </p>
-                        </div>
-
-                        {/* Capabilities */}
-                        <div>
-                          <div
-                            style={{
-                              fontFamily: 'var(--font-mono)',
-                              fontSize: '11px',
-                              color: 'var(--text-tertiary)',
-                              textTransform: 'uppercase' as const,
-                              letterSpacing: 'var(--tracking-wider)',
-                              marginBottom: '12px',
-                            }}
-                          >
-                            I CAN HELP WITH //
-                          </div>
-                          <div
-                            style={{
-                              display: 'flex',
-                              flexWrap: 'wrap',
-                              gap: '8px',
-                            }}
-                          >
-                            {service.capabilities.map((cap) => (
-                              <span
-                                key={cap}
-                                style={{
-                                  fontFamily: 'var(--font-body)',
-                                  fontSize: '13px',
-                                  color: 'var(--text-primary)',
-                                  backgroundColor: 'var(--bg-primary)',
-                                  padding: '6px 12px',
-                                  borderRadius: '2px',
-                                  border: '1px solid var(--border-primary)',
-                                }}
-                              >
-                                {cap}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
-                        {/* Typical Output & CTA */}
-                        <div
-                          style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                          }}
-                        >
-                          <div>
-                            <div
-                              style={{
-                                fontFamily: 'var(--font-mono)',
-                                fontSize: '11px',
-                                color: 'var(--text-tertiary)',
-                                textTransform: 'uppercase' as const,
-                                letterSpacing: 'var(--tracking-wider)',
-                                marginBottom: '12px',
-                              }}
-                            >
-                              TYPICAL OUTPUT //
-                            </div>
-                            <p
-                              style={{
-                                fontFamily: 'var(--font-body)',
-                                fontSize: 'var(--text-body)',
-                                lineHeight: 'var(--leading-body)',
-                                color: 'var(--text-secondary)',
-                                margin: '0 0 var(--space-6) 0',
-                              }}
-                            >
-                              {service.output}
-                            </p>
-                          </div>
-
-                          <div>
-                            <a
-                              href="#contact"
-                              className="project-btn-primary"
-                              style={{
-                                fontFamily: 'var(--font-body)',
-                                fontSize: 'var(--text-small)',
-                                fontWeight: 600,
-                                textTransform: 'uppercase' as const,
-                                letterSpacing: 'var(--tracking-wide)',
-                                textDecoration: 'none',
-                                color: 'var(--text-inverse)',
-                                backgroundColor: 'var(--text-primary)',
-                                padding: '12px 24px',
-                                borderRadius: '100px',
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '8px',
-                                transition: 'all 0.2s ease',
-                                border: '1px solid var(--text-primary)',
-                              }}
-                            >
-                              <span>Start a Project</span>
-                              <span className="btn-arrow">↗</span>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                  {service.title}
+                </h3>
+                <p
+                  className="service-row-desc"
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: 'clamp(1rem, 1.4vw, 1.25rem)',
+                    lineHeight: 1.45,
+                    color: 'var(--text-secondary)',
+                    margin: 0,
+                    maxWidth: '42ch',
+                    transition: 'color 0.35s ease',
+                  }}
+                >
+                  {service.description}
+                </p>
               </div>
-            )
-          })}
+
+              {/* Column 3: Concise Capability List */}
+              <div
+                className="service-row-capabilities"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px',
+                  paddingTop: '6px',
+                }}
+              >
+                {service.capabilities.map((cap) => (
+                  <div
+                    key={cap}
+                    className="capability-item"
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: 'var(--text-small)',
+                      color: 'var(--text-secondary)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      transition: 'color 0.35s ease',
+                    }}
+                  >
+                    <span className="cap-bullet" style={{ color: 'var(--accent)', fontSize: '10px' }}>▪</span>
+                    <span>{cap}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Column 4: Interactive Arrow */}
+              <div
+                className="service-row-arrow"
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)',
+                  fontWeight: 300,
+                  color: 'var(--text-tertiary)',
+                  textAlign: 'right',
+                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                  paddingTop: '4px',
+                }}
+              >
+                ↘
+              </div>
+            </a>
+          ))}
         </div>
       </div>
 
@@ -525,7 +364,7 @@ export default function Services() {
         </div>
       </div>
 
-      {/* ── 04. HOW I WORK (EDITORIAL HORIZONTAL PROCESS) ── */}
+      {/* ── 04. HOW I WORK (QUIETER PROCESS SEQUENCE) ── */}
       <div
         className="process-section"
         style={{
@@ -706,13 +545,34 @@ export default function Services() {
 
       {/* ── STYLES & RESPONSIVE RULES ── */}
       <style jsx>{`
-        .service-row-btn:hover .service-row-title {
-          transform: translateX(12px);
-          color: var(--accent) !important;
+        /* Desktop Hover Inversion & Movement for Service Rows */
+        .service-editorial-row:hover {
+          background-color: var(--text-primary) !important;
+          border-color: var(--accent) !important;
+          padding-left: clamp(1.5rem, 3vw, 3rem) !important;
+          padding-right: clamp(1.5rem, 3vw, 3rem) !important;
         }
 
-        .service-row-btn:hover .service-row-arrow {
-          transform: translate(3px, 3px);
+        .service-editorial-row:hover .service-row-title {
+          transform: translateX(10px);
+          color: var(--bg-primary) !important;
+        }
+
+        .service-editorial-row:hover .service-row-desc {
+          color: #d1d1c7 !important;
+        }
+
+        .service-editorial-row:hover .capability-item {
+          color: #faf9f7 !important;
+        }
+
+        .service-editorial-row:hover .service-row-number {
+          color: #ff5e45 !important;
+        }
+
+        .service-editorial-row:hover .service-row-arrow {
+          transform: translate(6px, 6px) rotate(-45deg);
+          color: var(--accent) !important;
         }
 
         .project-btn-primary:hover {
@@ -735,8 +595,8 @@ export default function Services() {
             padding-left: 0 !important;
             padding-top: var(--space-6) !important;
           }
-          .service-detail-columns {
-            grid-template-columns: 1fr !important;
+          .service-editorial-row {
+            grid-template-columns: 1fr 1fr !important;
             gap: var(--space-6) !important;
           }
           .process-grid {
@@ -746,17 +606,14 @@ export default function Services() {
         }
 
         @media (max-width: 768px) {
-          .service-row-btn {
+          .service-editorial-row {
             grid-template-columns: 1fr !important;
-            gap: 8px !important;
+            gap: var(--space-4) !important;
+            padding: var(--space-8) var(--space-4) !important;
           }
-          .service-row-preview {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 12px !important;
-          }
-          .service-detail-grid {
-            grid-template-columns: 1fr !important;
+          .service-row-arrow {
+            text-align: left !important;
+            padding-top: var(--space-2) !important;
           }
           .process-grid {
             grid-template-columns: 1fr !important;
@@ -765,8 +622,8 @@ export default function Services() {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .service-row-btn:hover .service-row-title,
-          .service-row-btn:hover .service-row-arrow,
+          .service-editorial-row:hover .service-row-title,
+          .service-editorial-row:hover .service-row-arrow,
           .project-btn-primary:hover .btn-arrow {
             transform: none !important;
           }

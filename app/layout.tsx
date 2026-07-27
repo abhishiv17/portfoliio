@@ -21,10 +21,39 @@ const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
 })
 
+const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL 
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` 
+  : process.env.VERCEL_URL 
+    ? `https://${process.env.VERCEL_URL}` 
+    : 'http://localhost:3000'
+
 export const metadata: Metadata = {
-  title: 'Abhishek MS — Developer & Designer',
+  title: 'Abhishek MS — Web Developer & Freelancer',
   description:
-    'Engineering student building fast, thoughtful web experiences for startups, businesses, and interesting ideas. Available for freelance projects.',
+    'Web Developer based in Bangalore, India. Building fast, responsive, and engaging digital experiences for startups and businesses. Available for freelance work.',
+  metadataBase: new URL(baseUrl),
+  openGraph: {
+    title: 'Abhishek MS — Web Developer & Freelancer',
+    description: 'Web Developer based in Bangalore. Building fast, responsive, and engaging digital experiences.',
+    url: baseUrl,
+    siteName: 'Abhishek MS',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Abhishek MS — Web Developer & Freelancer',
+      },
+    ],
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Abhishek MS — Web Developer',
+    description: 'Web Developer based in Bangalore. Building fast, responsive, and engaging digital experiences.',
+    images: ['/og-image.jpg'],
+  },
   icons: {
     icon: [
       {

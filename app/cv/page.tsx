@@ -415,10 +415,23 @@ export default function CVPage() {
           <div className="cv-section">
             <div className="cv-section-title">PROJECTS</div>
 
+            {/* Freshies */}
+            <div className="proj-entry">
+              <div className="proj-title-line">
+                Freshies Ice Creams – Artisanal Commercial Website | <a href="https://freshies-flax.vercel.app/" target="_blank" rel="noopener noreferrer">Live Website</a>
+              </div>
+              <ul className="proj-bullets">
+                <li>Designed and engineered a complete responsive <strong>commercial website</strong> for an artisanal real-fruit ice cream brand in Karnataka.</li>
+                <li>Developed interactive product showcases, ingredient transparency breakdowns, and a dynamic store locator using <strong>Next.js 16 and React 19</strong>.</li>
+                <li>Implemented custom <strong>GSAP scroll choreography</strong> and animation sequences while ensuring high page-load performance and accessibility.</li>
+                <li><strong>Tech Stack:</strong> Next.js 16, TypeScript, React 19, GSAP, Tailwind CSS</li>
+              </ul>
+            </div>
+
             {/* SkillSwap */}
             <div className="proj-entry">
               <div className="proj-title-line">
-                SkillSwap – Peer-to-Peer Skill Exchange Platform | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://code-carnage.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
+                SkillSwap – Peer-to-Peer Skill Exchange Platform | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://skill-swap-p-u9qf.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
               </div>
               <ul className="proj-bullets">
                 <li>Architected the entire full-stack infrastructure from scratch, leading all major <strong>technical decisions</strong> and database schema design.</li>
