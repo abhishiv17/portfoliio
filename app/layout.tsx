@@ -28,12 +28,12 @@ const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
     : 'http://localhost:3000'
 
 export const metadata: Metadata = {
-  title: 'Abhishek MS — Web Developer & Freelancer',
+  title: 'Abhishek MS | Web Developer & Freelancer',
   description:
     'Web Developer based in Bangalore, India. Building fast, responsive, and engaging digital experiences for startups and businesses. Available for freelance work.',
   metadataBase: new URL(baseUrl),
   openGraph: {
-    title: 'Abhishek MS — Web Developer & Freelancer',
+    title: 'Abhishek MS | Web Developer & Freelancer',
     description: 'Web Developer based in Bangalore. Building fast, responsive, and engaging digital experiences.',
     url: baseUrl,
     siteName: 'Abhishek MS',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Abhishek MS — Web Developer & Freelancer',
+        alt: 'Abhishek MS | Web Developer & Freelancer',
       },
     ],
     locale: 'en_IN',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abhishek MS — Web Developer',
+    title: 'Abhishek MS | Web Developer',
     description: 'Web Developer based in Bangalore. Building fast, responsive, and engaging digital experiences.',
     images: ['/og-image.jpg'],
   },

@@ -82,7 +82,7 @@ export default function Navigation() {
               textDecoration: 'none',
               textTransform: 'uppercase' as const,
             }}
-            aria-label="Abhishek MS — Home"
+            aria-label="Abhishek MS | Home"
           >
             ABHISHEK MS
           </a>
