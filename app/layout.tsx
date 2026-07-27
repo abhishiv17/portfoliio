@@ -1,15 +1,30 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Sora, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+})
+
+const sora = Sora({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sora',
+})
+
+const geistMono = Geist_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-geist-mono',
+})
 
 export const metadata: Metadata = {
-  title: 'Abhishek M Shivanagoudar | Software Engineering Portfolio',
-  description: 'Full-Stack Software Developer specializing in scalable web applications and clean code.',
-  generator: 'v0.app',
+  title: 'Abhishek MS — Developer & Designer',
+  description:
+    'Engineering student building fast, thoughtful web experiences for startups, businesses, and interesting ideas. Available for freelance projects.',
   icons: {
     icon: [
       {
@@ -41,7 +56,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${sora.variable} ${geistMono.variable}`}>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

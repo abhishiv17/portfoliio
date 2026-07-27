@@ -368,6 +368,8 @@ export default function CVPage() {
             <div className="cv-contact-bar">
               <span>Bangalore, Karnataka</span>
               <span className="sep">|</span>
+              <span>Contact No: 8904660785</span>
+              <span className="sep">|</span>
               <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <span className="sep">|</span>
               <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">Github</a>
@@ -464,18 +466,7 @@ export default function CVPage() {
               </ul>
             </div>
 
-            {/* Cerebyte – Working Project */}
-            <div className="proj-entry">
-              <div className="proj-title-line">
-                Cerebyte – AI-Integrated Ed-Tech Platform <span style={{ fontSize: '9px', fontWeight: 700, color: '#d97706', background: '#fef3c7', padding: '1px 6px', borderRadius: '3px', marginLeft: '4px' }}>Working Project</span> | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a>
-              </div>
-              <ul className="proj-bullets">
-                <li>Leading the design and development of an AI-integrated ed-tech platform for mastering <strong>Data Structures &amp; Algorithms</strong>.</li>
-                <li>Building a <strong>sandboxed code execution engine</strong> with Docker and implementing interactive data structure visualizations.</li>
-                <li>Integrating an <strong>AI-driven mentor</strong> for personalized student feedback; managing the full project lifecycle.</li>
-                <li><strong>Tech Stack:</strong> TypeScript, Next.js, PostgreSQL, Docker, Tailwind CSS</li>
-              </ul>
-            </div>
+
           </div>
 
           {/* ──── KEY ACHIEVEMENTS ──── */}
