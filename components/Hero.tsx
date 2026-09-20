@@ -83,18 +83,30 @@ export default function Hero() {
       >
         {/* Left Column: Monumental Headline "THINGS I'VE PUT ON THE INTERNET." */}
         <div className="hero-statement">
-          <div
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.15em',
-              color: 'var(--accent)',
-              textTransform: 'uppercase',
-              marginBottom: 'var(--space-4)',
-            }}
-          >
-            01 / WORK // FEATURED
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: 'var(--space-4)' }}>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.15em',
+                color: 'var(--accent)',
+                textTransform: 'uppercase',
+              }}
+            >
+              00 // INTRO
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '11px',
+                color: 'var(--text-tertiary)',
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+              }}
+            >
+              [ OVERVIEW ]
+            </span>
           </div>
 
           {[
@@ -123,6 +135,7 @@ export default function Hero() {
                 baseColor="var(--accent)"
                 overlayColor="var(--bg-primary)"
                 triggerStart="top 65%"
+                once={false}
               >
                 {line.text}
               </RectangularTextReveal>

@@ -401,7 +401,7 @@ export default function CVPage() {
               <strong>Web Development (Backend):</strong> Node.js, Express
             </div>
             <div className="skill-row">
-              <strong>Languages:</strong> Java, Python, TypeScript, JavaScript, C++, C
+              <strong>Languages:</strong> Java, Python, TypeScript, JavaScript, C
             </div>
             <div className="skill-row">
               <strong>Databases:</strong> PostgreSQL, Supabase, MongoDB
