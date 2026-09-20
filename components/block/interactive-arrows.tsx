@@ -20,11 +20,19 @@ const behaviors = [
   { value: "points", label: "Points" },
 ];
 
-/** @param {{ variant?: "arrows" | "opacity" | "smooth" | "playful" | "lines" | "points", text?: string, showControls?: boolean, className?: string, height?: import("react").CSSProperties["height"], style?: import("react").CSSProperties }} props */
-export function InteractiveArrows({ variant = "arrows", text = "", showControls = false, className, height = 400, style } = {}) {
+interface InteractiveArrowsProps {
+  variant?: "arrows" | "opacity" | "smooth" | "playful" | "lines" | "points";
+  text?: string;
+  showControls?: boolean;
+  className?: string;
+  height?: number | string;
+  style?: React.CSSProperties;
+}
+
+export function InteractiveArrows({ variant = "arrows", text = "", showControls = false, className, height = 400, style }: InteractiveArrowsProps = {}) {
   const [selected, setSelected] = useState(variant);
   const active = showControls ? selected : variant;
-  const Engine = engines[active] || Arrows;
+  const Engine = engines[active as keyof typeof engines] || Arrows;
   const dark = active === "smooth" || active === "playful";
 
   return <div className={cn("relative isolate flex w-full flex-col bg-background", className)} style={{ height, containerType: "inline-size", ...style }}>
@@ -33,7 +41,7 @@ export function InteractiveArrows({ variant = "arrows", text = "", showControls 
     </div>
     {showControls && <div data-arrow-controls="" className="flex shrink-0 items-center justify-between gap-3 bg-background px-3 py-2.5 text-foreground">
       <span className="text-xs text-muted-foreground">Arrow behavior</span>
-      <Select value={selected} onValueChange={setSelected}>
+      <Select value={selected} onValueChange={(val: any) => setSelected(val)}>
         <SelectTrigger aria-label="Arrow behavior" className="h-9 min-w-[170px] rounded-lg border-border/70 bg-background text-xs shadow-none transition-[background-color,border-color] duration-150 hover:bg-muted/60 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/20 dark:bg-background dark:hover:bg-muted/60 [&_svg]:transition-transform [&_svg]:duration-200 data-[state=open]:[&_svg]:rotate-180 motion-reduce:transition-none motion-reduce:[&_svg]:transition-none">
           <SelectValue />
         </SelectTrigger>

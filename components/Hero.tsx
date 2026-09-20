@@ -4,6 +4,7 @@ import React from 'react'
 import { RectangularTextReveal } from '@/components/block/rectangular-text-reveal'
 import { DottedGrid } from '@/components/block/dotted-grid'
 import { EditorialTradingCard } from '@/components/block/trading-card'
+import { HoverLivePreview } from '@/components/block/hover-live-preview'
 
 export default function Hero() {
   return (
@@ -213,15 +214,17 @@ export default function Hero() {
             alignItems: 'center',
           }}
         >
-          <EditorialTradingCard
-            number="01"
-            title="Blind-Run"
-            category="ASYMMETRIC MULTIPLAYER GAME"
-            description="Real-time asymmetric multiplayer heist game engineered with React Three Fiber, Rapier physics, and Colyseus."
-            stack={['React Three Fiber', 'Rapier', 'Colyseus', 'React']}
-            link="https://blindrun.vercel.app/"
-            highlight="FEATURED BUILD"
-          />
+          <HoverLivePreview url="https://blindrun.vercel.app/" className="w-fit h-fit">
+            <EditorialTradingCard
+              number="01"
+              title="Blind-Run"
+              category="ASYMMETRIC MULTIPLAYER GAME"
+              description="Real-time asymmetric multiplayer heist game engineered with React Three Fiber, Rapier physics, and Colyseus."
+              stack={['React Three Fiber', 'Rapier', 'Colyseus', 'React']}
+              link="https://blindrun.vercel.app/"
+              highlight="FEATURED BUILD"
+            />
+          </HoverLivePreview>
         </div>
       </div>
 

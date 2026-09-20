@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll } from 'motion/react';
 import { PROJECTS, Project } from '@/data/portfolio';
 import { ArrowLeft, ArrowRight, ExternalLink, Github } from 'lucide-react';
+import { HoverLivePreview } from '@/components/block/hover-live-preview';
 
 export default function ProjectFlipShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -175,18 +176,19 @@ export default function ProjectFlipShowcase() {
         </div>
 
         {/* Center: 3D Flip Showcase Card */}
-        <div
-          style={{
-            perspective: 1200,
-            width: '100%',
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            margin: 'auto 0',
-            padding: 'var(--space-4) 0',
-          }}
-        >
+        <HoverLivePreview url={activeProject.link || ''} className="w-full flex-1 flex">
+          <div
+            style={{
+              perspective: 1200,
+              width: '100%',
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: 'auto 0',
+              padding: 'var(--space-4) 0',
+            }}
+          >
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProject.number}
@@ -458,6 +460,7 @@ export default function ProjectFlipShowcase() {
             </motion.div>
           </AnimatePresence>
         </div>
+      </HoverLivePreview>
 
         {/* Bottom bar: Segmented Progress Indicator & Dots */}
         <div

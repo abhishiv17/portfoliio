@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { PROFILE } from '@/data/portfolio';
 import { ArrowUp } from 'lucide-react';
-import { InteractiveArrows } from '@/components/block/interactive-arrows';
+import { ColorfulCursorAura } from '@/components/block/colorful-cursor-aura';
 
 export default function Footer() {
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -18,23 +18,25 @@ export default function Footer() {
   return (
     <footer
       style={{
-        backgroundColor: '#0a0a0a',
-        color: '#f3f1ed',
-        padding: 'clamp(4rem, 8vh, 6rem) 0 var(--space-8) 0',
-        width: '100%',
-        position: 'relative',
-        overflow: 'hidden',
+        backgroundColor: '#111',
+        paddingTop: 'var(--space-8)',
+        paddingBottom: 'var(--space-4)',
         borderTop: '1px solid #222',
+        color: '#f3f1ed',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
       <div
         style={{
           maxWidth: 'var(--max-w-wide)',
+          width: '100%',
           margin: '0 auto',
           padding: '0 var(--px-page)',
           display: 'flex',
           flexDirection: 'column',
           gap: 'clamp(3rem, 6vw, 6rem)',
+          boxSizing: 'border-box'
         }}
       >
         {/* Top Info Bar */}
@@ -111,24 +113,37 @@ export default function Footer() {
           }}
         >
           <motion.div
-            initial={{ opacity: 0, letterSpacing: '0.25em', clipPath: 'inset(0 100% 0 0)' }}
-            whileInView={{ opacity: 1, letterSpacing: '-0.03em', clipPath: 'inset(0 0% 0 0)' }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.8rem, 13.5vw, 13rem)',
-              fontWeight: 800,
-              lineHeight: 0.85,
-              color: '#f3f1ed',
-              height: '350px',
               width: '100%',
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
             }}
           >
-            <InteractiveArrows variant="arrows" text="ABHISHEK MS" height="100%" style={{ width: '100%' }} />
+            <ColorfulCursorAura 
+              enableEntryAnimation={false} 
+              colors={{ color1: '#ea580c', color2: '#f5dd94', color3: '#7f7de4' }}
+            >
+              <h2
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2.5rem, 13vw, 13rem)',
+                  fontWeight: 800,
+                  lineHeight: 0.85,
+                  color: '#f3f1ed',
+                  margin: 0,
+                  textTransform: 'uppercase',
+                  whiteSpace: 'nowrap',
+                  letterSpacing: 'inherit'
+                }}
+              >
+                ABHISHEK MS
+              </h2>
+            </ColorfulCursorAura>
           </motion.div>
         </div>
 

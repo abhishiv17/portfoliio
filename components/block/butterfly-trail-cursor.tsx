@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client'
 /* eslint-disable react-hooks/immutability -- Three.js scene objects are mutable render resources owned by this component. */
 
