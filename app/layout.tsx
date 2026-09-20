@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Sora, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { ButterflyTrailCursor } from "@/components/block/butterfly-trail-cursor"
+
 import './globals.css'
 
 const inter = Inter({
@@ -28,13 +30,13 @@ const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
     : 'http://localhost:3000'
 
 export const metadata: Metadata = {
-  title: 'Abhishek MS | Web Developer & Freelancer',
+  title: 'Abhishek MS | Computer Science Undergrad & Software Engineer',
   description:
-    'Web Developer based in Bangalore, India. Building fast, responsive, and engaging digital experiences for startups and businesses. Available for freelance work.',
+    'Computer Science student at Dr. Ambedkar Institute of Technology, Bangalore (9.0 CGPA). Building full-stack systems, real-time web applications, and seeking software engineering internships.',
   metadataBase: new URL(baseUrl),
   openGraph: {
-    title: 'Abhishek MS | Web Developer & Freelancer',
-    description: 'Web Developer based in Bangalore. Building fast, responsive, and engaging digital experiences.',
+    title: 'Abhishek MS | Computer Science Undergrad & Software Engineer',
+    description: 'CS student at Dr. AIT Bangalore (9.0 CGPA) & Software Engineer. Building fast, reliable web systems and open to SWE internships.',
     url: baseUrl,
     siteName: 'Abhishek MS',
     images: [
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Abhishek MS | Web Developer & Freelancer',
+        alt: 'Abhishek MS | Computer Science Undergrad & Software Engineer',
       },
     ],
     locale: 'en_IN',
@@ -50,8 +52,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abhishek MS | Web Developer',
-    description: 'Web Developer based in Bangalore. Building fast, responsive, and engaging digital experiences.',
+    title: 'Abhishek MS | CS Undergrad & Software Engineer',
+    description: 'CS student at Dr. AIT Bangalore (9.0 CGPA). Open to SWE internships.',
     images: ['/og-image.jpg'],
   },
   icons: {
@@ -85,8 +87,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sora.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased">
+        <ButterflyTrailCursor />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

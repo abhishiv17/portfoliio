@@ -166,7 +166,7 @@ export default function FreshiesCaseStudy() {
               OVERVIEW //
             </h2>
             <p style={{ fontFamily: 'var(--font-body)', fontSize: 'var(--text-body)', lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: '65ch', margin: 0 }}>
-              Freshies Ice Creams is an artisanal beverage and ice cream brand in Karnataka crafting small batches with real fruits, real nuts, and zero artificial flavours. As a freelance web developer and designer, I was tasked with engineering a digital presence that reflects their commitment to natural ingredients and craftsmanship.
+              Freshies Ice Creams is an artisanal beverage and ice cream brand in Karnataka crafting small batches with real fruits, real nuts, and zero artificial flavours. As the lead web engineer and designer, I was tasked with engineering a digital presence that reflects their commitment to natural ingredients and craftsmanship.
             </p>
           </section>
 

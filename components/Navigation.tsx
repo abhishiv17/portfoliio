@@ -1,17 +1,30 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
+
+import { CircleMenu, CircleMenuItem } from '@/components/block/circle-menu'
+import { FolderPreview } from '@/components/block/folder-preview'
+import { Briefcase, Cpu, User, Mail, FileText, Github, Linkedin, Twitter } from 'lucide-react'
+import { PROFILE } from '@/data/portfolio'
 
 const NAV_LINKS = [
   { label: 'Work', href: '#work' },
-  { label: 'Services', href: '#services' },
+  { label: 'Systems', href: '#systems' },
   { label: 'About', href: '#about' },
-  { label: 'Lab', href: '#lab' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Resume', href: '/cv' },
+]
+
+const CIRCLE_NAV_ITEMS: CircleMenuItem[] = [
+  { label: 'Work', icon: <Briefcase size={16} />, href: '#work' },
+  { label: 'Systems', icon: <Cpu size={16} />, href: '#systems' },
+  { label: 'About', icon: <User size={16} />, href: '#about' },
+  { label: 'Contact', icon: <Mail size={16} />, href: '#contact' },
+  { label: 'Resume', icon: <FileText size={16} />, href: '/cv' },
 ]
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -19,27 +32,6 @@ export default function Navigation() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  // Body scroll lock
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add('menu-open')
-    } else {
-      document.body.classList.remove('menu-open')
-    }
-    return () => document.body.classList.remove('menu-open')
-  }, [menuOpen])
-
-  // Escape to close
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && menuOpen) setMenuOpen(false)
-    }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [menuOpen])
-
-  const closeMenu = useCallback(() => setMenuOpen(false), [])
 
   return (
     <>
@@ -87,302 +79,100 @@ export default function Navigation() {
             ABHISHEK MS
           </a>
 
-          {/* Desktop nav links */}
+          {/* Desktop Right Actions: Socials & Resume Folder */}
           <div
-            className="nav-links-desktop"
+            className="nav-actions-desktop"
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 'var(--space-10)',
+              gap: 'var(--space-6)',
             }}
           >
-            <div style={{ display: 'flex', gap: 'var(--space-8)' }}>
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="nav-link"
-                  style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: 'var(--text-micro)',
-                    fontWeight: 500,
-                    letterSpacing: 'var(--tracking-wide)',
-                    textTransform: 'uppercase' as const,
-                    color: 'var(--text-secondary)',
-                    textDecoration: 'none',
-                    position: 'relative',
-                    padding: 'var(--space-1) 0',
-                    transition: `color var(--duration-fast) var(--ease-out)`,
-                  }}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <a
-              href="#contact"
-              className="nav-cta"
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: 'var(--text-micro)',
-                fontWeight: 600,
-                letterSpacing: 'var(--tracking-wide)',
-                textTransform: 'uppercase' as const,
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                padding: 'var(--space-2) var(--space-5)',
-                border: '1px solid var(--text-primary)',
-                borderRadius: '100px',
-                transition: `all var(--duration-normal) var(--ease-out)`,
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 'var(--space-2)',
-              }}
-            >
-              Start a Project
-              <span
-                className="cta-arrow"
-                style={{
-                  display: 'inline-block',
-                  transition: `transform var(--duration-fast) var(--ease-out)`,
-                }}
+            {/* Social Links */}
+            <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'center' }}>
+              <a
+                href={PROFILE.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
               >
-                ↗
-              </span>
-            </a>
-          </div>
+                <Github size={20} />
+              </a>
+              <a
+                href={PROFILE.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+              >
+                <Linkedin size={20} />
+              </a>
+              <a
+                href={PROFILE.twitter}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--text-secondary)', transition: 'color 0.2s' }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
+              >
+                <Twitter size={20} />
+              </a>
+            </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="nav-menu-btn"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            style={{
-              display: 'none', // shown via CSS media query
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 'var(--space-2)',
-              color: 'var(--text-primary)',
-            }}
-          >
-            <div
-              style={{
-                width: '24px',
-                height: '14px',
-                position: 'relative',
-              }}
-            >
-              <span
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  width: '100%',
-                  height: '1.5px',
-                  backgroundColor: 'currentColor',
-                  transition: `all var(--duration-normal) var(--ease-out)`,
-                  top: menuOpen ? '6px' : 0,
-                  transform: menuOpen ? 'rotate(45deg)' : 'none',
-                }}
-              />
-              <span
-                style={{
-                  position: 'absolute',
-                  left: 0,
-                  bottom: menuOpen ? '6px' : 0,
-                  width: menuOpen ? '100%' : '60%',
-                  height: '1.5px',
-                  backgroundColor: 'currentColor',
-                  transition: `all var(--duration-normal) var(--ease-out)`,
-                  transform: menuOpen ? 'rotate(-45deg)' : 'none',
-                  marginLeft: menuOpen ? 0 : 'auto',
-                }}
+            {/* Vertical Divider */}
+            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--border-primary)' }} />
+
+            {/* Folder Preview for Resume */}
+            <div style={{ transform: 'scale(0.7) translateY(8px)', transformOrigin: 'right center' }}>
+              <FolderPreview
+                variant="nandi"
+                label="RESUME"
+                files={[{ name: 'resume.pdf', type: 'txt' }]}
+                onClick={() => window.open('/cv', '_blank')}
               />
             </div>
-          </button>
+          </div>
         </div>
       </nav>
 
-      {/* Mobile menu overlay */}
+      {/* Floating Bottom Center Navigation */}
       <div
-        id="mobile-menu"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Navigation menu"
         style={{
           position: 'fixed',
-          inset: 0,
-          zIndex: 'var(--z-mobile-menu)' as any,
-          backgroundColor: 'var(--bg-primary)',
+          bottom: 'var(--space-6)',
+          left: 0,
+          right: 0,
           display: 'flex',
-          flexDirection: 'column',
           justifyContent: 'center',
-          padding: 'var(--space-12) var(--px-page)',
-          opacity: menuOpen ? 1 : 0,
-          pointerEvents: menuOpen ? 'auto' : 'none',
-          transition: `opacity var(--duration-slow) var(--ease-out)`,
+          zIndex: 'var(--z-nav)' as any,
+          pointerEvents: 'none',
         }}
       >
-        {/* Close button inside overlay */}
-        <button
-          onClick={closeMenu}
-          aria-label="Close menu"
-          style={{
-            position: 'absolute',
-            top: 'var(--space-5)',
-            right: 'var(--px-page)',
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            color: 'var(--text-primary)',
-            padding: 'var(--space-2)',
-          }}
-        >
-          <div style={{ width: '24px', height: '24px', position: 'relative' }}>
-            <span
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: '11px',
-                width: '100%',
-                height: '1.5px',
-                backgroundColor: 'currentColor',
-                transform: 'rotate(45deg)',
-              }}
-            />
-            <span
-              style={{
-                position: 'absolute',
-                left: 0,
-                top: '11px',
-                width: '100%',
-                height: '1.5px',
-                backgroundColor: 'currentColor',
-                transform: 'rotate(-45deg)',
-              }}
-            />
-          </div>
-        </button>
-
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-          {[
-            { label: 'Work', href: '#work' },
-            { label: 'Services', href: '#services' },
-            { label: 'About', href: '#about' },
-            { label: 'Lab', href: '#lab' },
-            { label: 'Contact', href: '#contact' },
-          ].map((link, i) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={closeMenu}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(2rem, 8vw, 3.5rem)',
-                fontWeight: 700,
-                letterSpacing: 'var(--tracking-tight)',
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                textTransform: 'uppercase' as const,
-                lineHeight: 1.15,
-                padding: 'var(--space-3) 0',
-                borderBottom: '1px solid var(--border-primary)',
-                opacity: menuOpen ? 1 : 0,
-                transform: menuOpen ? 'translateY(0)' : 'translateY(20px)',
-                transition: `opacity 0.4s var(--ease-out) ${0.1 + i * 0.05}s, transform 0.4s var(--ease-out) ${0.1 + i * 0.05}s`,
-              }}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Mobile menu footer */}
-        <div
-          style={{
-            marginTop: 'var(--space-12)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'var(--space-4)',
-            opacity: menuOpen ? 1 : 0,
-            transition: `opacity 0.4s var(--ease-out) 0.4s`,
-          }}
-        >
-          <a
-            href="mailto:abhishiv208@gmail.com"
-            onClick={closeMenu}
-            style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: 'var(--text-small)',
-              color: 'var(--text-secondary)',
-              textDecoration: 'none',
-              letterSpacing: 'var(--tracking-wide)',
-            }}
-          >
-            abhishiv208@gmail.com
-          </a>
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--space-6)',
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'var(--text-meta)',
-              color: 'var(--text-tertiary)',
-              textTransform: 'uppercase' as const,
-              letterSpacing: 'var(--tracking-wider)',
-            }}
-          >
-            <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-              GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
-              LinkedIn
-            </a>
-          </div>
+        <div style={{ pointerEvents: 'auto' }}>
+          <CircleMenu items={CIRCLE_NAV_ITEMS} />
         </div>
       </div>
 
       {/* Navigation responsive styles */}
       <style jsx>{`
-        .nav-links-desktop {
+        .nav-actions-desktop {
           display: flex !important;
         }
         .nav-menu-btn {
           display: none !important;
         }
 
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          width: 0;
-          height: 1px;
-          background-color: var(--text-primary);
-          transition: width var(--duration-normal) var(--ease-out);
-        }
-        .nav-link:hover {
-          color: var(--text-primary) !important;
-        }
-        .nav-link:hover::after {
-          width: 100%;
-        }
 
-        .nav-cta:hover {
-          background-color: var(--text-primary) !important;
-          color: var(--text-inverse) !important;
-        }
-        .nav-cta:hover .cta-arrow {
-          transform: translate(2px, -2px);
-        }
 
         @media (max-width: 768px) {
-          .nav-links-desktop {
+          .nav-actions-desktop {
             display: none !important;
+          }
+          .nav-mobile-actions {
+            display: flex !important;
           }
           .nav-menu-btn {
             display: flex !important;

@@ -1,83 +1,40 @@
 @import "tailwindcss";
-@plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
 /* ═══════════════════════════════════════════════
-   DESIGN SYSTEM — PHASE 1
+   DESIGN SYSTEM - PHASE 1
    Editorial × Playful × Technical × Minimal
    ═══════════════════════════════════════════════ */
 
-/* ── COLOR TOKENS ── */
 :root {
   /* Background */
-  --bg-primary: #FAF9F7;
-  --bg-secondary: #F3F1ED;
-  --bg-tertiary: #EBE8E3;
-
-  /* Text */
-  --text-primary: #1A1A1A;
-  --text-secondary: #6B6B6B;
-  --text-tertiary: #9A9A9A;
-  --text-inverse: #FAF9F7;
-
-  /* Accent — warm vermillion */
-  --accent: #E8503A;
-  --accent-hover: #D4412D;
-  --accent-subtle: rgba(232, 80, 58, 0.08);
-  --accent-muted: rgba(232, 80, 58, 0.15);
-
-  /* Borders */
-  --border-primary: #E8E5E0;
-  --border-secondary: #D6D2CC;
-  --border-subtle: rgba(0, 0, 0, 0.06);
-
-  /* Surfaces */
-  --surface-elevated: #FFFFFF;
-  --surface-overlay: rgba(250, 249, 247, 0.92);
-
-  /* Shadcn compatibility */
-  --background: #FAF9F7;
-  --foreground: #1A1A1A;
-  --card: #FFFFFF;
-  --card-foreground: #1A1A1A;
-  --primary: #1A1A1A;
-  --primary-foreground: #FAF9F7;
-  --secondary: #F3F1ED;
-  --secondary-foreground: #1A1A1A;
-  --muted: #F3F1ED;
-  --muted-foreground: #6B6B6B;
-  --accent-tw: #F3F1ED;
-  --accent-foreground: #1A1A1A;
-  --border: #E8E5E0;
-  --input: #E8E5E0;
-  --ring: #E8503A;
-  --radius: 0.5rem;
-}
-
-/* ── DARK MODE TOKENS (prepared, not yet active) ── */
-.dark {
   --bg-primary: #111111;
   --bg-secondary: #1A1A1A;
   --bg-tertiary: #222222;
 
+  /* Text */
   --text-primary: #F0EFED;
   --text-secondary: #999999;
   --text-tertiary: #666666;
   --text-inverse: #111111;
 
+  /* Accent - warm vermillion */
   --accent: #EF6B55;
   --accent-hover: #F57D69;
   --accent-subtle: rgba(239, 107, 85, 0.1);
   --accent-muted: rgba(239, 107, 85, 0.18);
 
+  /* Borders */
   --border-primary: #2A2A2A;
   --border-secondary: #333333;
   --border-subtle: rgba(255, 255, 255, 0.06);
 
+  /* Surfaces */
   --surface-elevated: #1A1A1A;
   --surface-overlay: rgba(17, 17, 17, 0.92);
 
+  /* Shadcn compatibility */
   --background: #111111;
   --foreground: #F0EFED;
   --card: #1A1A1A;
@@ -93,6 +50,7 @@
   --border: #2A2A2A;
   --input: #2A2A2A;
   --ring: #EF6B55;
+  --radius: 0.5rem;
 }
 
 /* ── TYPOGRAPHY SCALE ── */
@@ -101,7 +59,7 @@
   --font-body: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), 'SF Mono', 'Fira Code', monospace;
 
-  /* Type sizes — using clamp for fluid responsive */
+  /* Type sizes - using clamp for fluid responsive */
   --text-display-xl: clamp(3.5rem, 8vw, 8rem);
   --text-display: clamp(2.5rem, 5vw, 5rem);
   --text-h1: clamp(2rem, 3.5vw, 3.5rem);
@@ -391,3 +349,29 @@ html {
 body.menu-open {
   overflow: hidden;
 }
+
+/* ── OBSIDIAN UI FLIP TEXT ANIMATION ── */
+.flip-char {
+  display: inline-block;
+  transform-origin: 50% 50%;
+  animation: flipCharAnimation var(--flip-duration, 2.2s) cubic-bezier(0.16, 1, 0.3, 1) var(--flip-delay, 0s) var(--flip-iteration, infinite) both;
+}
+
+@keyframes flipCharAnimation {
+  0% {
+    transform: rotateX(0deg);
+  }
+  20% {
+    transform: rotateX(90deg);
+    opacity: 0.2;
+  }
+  40% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+

@@ -7,7 +7,7 @@ export default function CVPage() {
 
   return (
     <>
-      {/* Print-specific styles — A4, one page, no browser chrome */}
+      {/* Print-specific styles - A4, one page, no browser chrome */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Georgia&display=swap');
 
@@ -38,7 +38,7 @@ export default function CVPage() {
         }
 
         @media screen {
-          body { background: #0f172a !important; }
+          body { background: #111111 !important; }
         }
 
         /* ── Responsive CV Wrapper ── */
@@ -59,7 +59,7 @@ export default function CVPage() {
           font-family: 'Times New Roman', Georgia, 'Noto Serif', serif;
           background: #ffffff;
           color: #000000;
-          padding: 32px 44px 28px;
+          padding: 20px 40px 16px;
           box-sizing: border-box;
           border-radius: 8px;
           box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
@@ -103,16 +103,16 @@ export default function CVPage() {
 
         /* ── Section ── */
         .cv-section {
-          margin-bottom: 6px;
+          margin-bottom: 4px;
         }
         .cv-section-title {
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 700;
           color: #000;
           text-transform: uppercase;
           border-bottom: 1.5px solid #000;
-          padding-bottom: 2px;
-          margin-bottom: 5px;
+          padding-bottom: 1px;
+          margin-bottom: 3px;
           letter-spacing: 0.04em;
         }
 
@@ -123,32 +123,32 @@ export default function CVPage() {
           align-items: baseline;
         }
         .edu-institution {
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
           color: #000;
         }
         .edu-location {
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
           color: #000;
         }
         .edu-degree {
-          font-size: 10.5px;
+          font-size: 11px;
           font-style: italic;
           color: #000;
         }
         .edu-year {
-          font-size: 10.5px;
+          font-size: 11px;
           font-style: italic;
           color: #000;
         }
 
         /* ── Skills ── */
         .skill-row {
-          font-size: 10.5px;
+          font-size: 11px;
           color: #000;
-          margin-bottom: 2px;
-          line-height: 1.5;
+          margin-bottom: 1px;
+          line-height: 1.3;
         }
         .skill-row strong {
           font-weight: 700;
@@ -156,10 +156,10 @@ export default function CVPage() {
 
         /* ── Projects ── */
         .proj-entry {
-          margin-bottom: 6px;
+          margin-bottom: 4px;
         }
         .proj-title-line {
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
           color: #000;
           margin-bottom: 1px;
@@ -168,26 +168,26 @@ export default function CVPage() {
           color: #1a0dab;
           text-decoration: underline;
           font-weight: 700;
-          font-size: 10.5px;
+          font-size: 11px;
         }
         .proj-title-line a:hover {
           color: #0000cc;
         }
         .proj-subtitle {
-          font-size: 10px;
+          font-size: 11px;
           font-style: italic;
           color: #333;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         }
         .proj-bullets {
           margin: 0;
           padding-left: 20px;
         }
         .proj-bullets li {
-          font-size: 10px;
+          font-size: 11px;
           color: #000;
-          line-height: 1.5;
-          margin-bottom: 1px;
+          line-height: 1.3;
+          margin-bottom: 0px;
         }
         .proj-bullets li strong {
           font-weight: 700;
@@ -195,10 +195,10 @@ export default function CVPage() {
 
         /* ── Achievements ── */
         .achieve-entry {
-          margin-bottom: 5px;
+          margin-bottom: 3px;
         }
         .achieve-title-line {
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
           color: #000;
           margin-bottom: 1px;
@@ -207,23 +207,23 @@ export default function CVPage() {
           color: #1a0dab;
           text-decoration: underline;
           font-weight: 700;
-          font-size: 10.5px;
+          font-size: 11px;
         }
         .achieve-subtitle {
-          font-size: 10px;
+          font-size: 11px;
           font-style: italic;
           color: #333;
-          margin-bottom: 2px;
+          margin-bottom: 1px;
         }
         .achieve-bullets {
           margin: 0;
           padding-left: 20px;
         }
         .achieve-bullets li {
-          font-size: 10px;
+          font-size: 11px;
           color: #000;
-          line-height: 1.5;
-          margin-bottom: 1px;
+          line-height: 1.3;
+          margin-bottom: 0px;
         }
 
         /* ── Experience ── */
@@ -236,17 +236,17 @@ export default function CVPage() {
           align-items: baseline;
         }
         .exp-title-name {
-          font-size: 11px;
+          font-size: 11.5px;
           font-weight: 700;
           color: #000;
         }
         .exp-title-date {
-          font-size: 10.5px;
+          font-size: 11px;
           font-style: italic;
           color: #000;
         }
         .exp-org {
-          font-size: 10.5px;
+          font-size: 11px;
           font-style: italic;
           color: #333;
           margin-bottom: 2px;
@@ -256,9 +256,9 @@ export default function CVPage() {
           padding-left: 20px;
         }
         .exp-bullets li {
-          font-size: 10px;
+          font-size: 11px;
           color: #000;
-          line-height: 1.5;
+          line-height: 1.3;
           margin-bottom: 1px;
         }
 
@@ -401,7 +401,7 @@ export default function CVPage() {
               <strong>Web Development (Backend):</strong> Node.js, Express
             </div>
             <div className="skill-row">
-              <strong>Languages:</strong> Python, TypeScript, JavaScript, C++, C
+              <strong>Languages:</strong> Java, Python, TypeScript, JavaScript, C++, C
             </div>
             <div className="skill-row">
               <strong>Databases:</strong> PostgreSQL, Supabase, MongoDB
@@ -415,23 +415,23 @@ export default function CVPage() {
           <div className="cv-section">
             <div className="cv-section-title">PROJECTS</div>
 
-            {/* Freshies */}
+            {/* Blind-Run */}
             <div className="proj-entry">
               <div className="proj-title-line">
-                Freshies Ice Creams – Artisanal Commercial Website | <a href="https://freshies-flax.vercel.app/" target="_blank" rel="noopener noreferrer">Live Website</a>
+                Blind-Run – Asymmetric Multiplayer Game | <a href="https://github.com/abhishiv17/Blind-Run" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://blindrun.vercel.app/" target="_blank" rel="noopener noreferrer">Live Game</a>
               </div>
               <ul className="proj-bullets">
-                <li>Designed and engineered a complete responsive <strong>commercial website</strong> for an artisanal real-fruit ice cream brand in Karnataka.</li>
-                <li>Developed interactive product showcases, ingredient transparency breakdowns, and a dynamic store locator using <strong>Next.js 16 and React 19</strong>.</li>
-                <li>Implemented custom <strong>GSAP scroll choreography</strong> and animation sequences while ensuring high page-load performance and accessibility.</li>
-                <li><strong>Tech Stack:</strong> Next.js 16, TypeScript, React 19, GSAP, Tailwind CSS</li>
+                <li>Engineered a real-time asymmetric multiplayer heist game using <strong>React Three Fiber</strong> and <strong>Rapier physics</strong>.</li>
+                <li>Architected authoritative state synchronization via <strong>Colyseus</strong> to handle complex role-based visibility across devices.</li>
+                <li>Implemented deterministic multiplayer room logic and unified cross-device responsive controls.</li>
+                <li><strong>Tech Stack:</strong> React Three Fiber, Rapier, Colyseus, TypeScript, React</li>
               </ul>
             </div>
 
             {/* SkillSwap */}
             <div className="proj-entry">
               <div className="proj-title-line">
-                SkillSwap – Peer-to-Peer Skill Exchange Platform | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://skill-swap-p-u9qf.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
+                SkillSwap – Peer-to-Peer Skill Exchange Platform | <a href="https://github.com/abhishiv17/SkillSwapP" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://skill-swap-p.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
               </div>
               <ul className="proj-bullets">
                 <li>Architected the entire full-stack infrastructure from scratch, leading all major <strong>technical decisions</strong> and database schema design.</li>
@@ -467,15 +467,16 @@ export default function CVPage() {
               </ul>
             </div>
 
-            {/* Simon-Says */}
+            {/* Freshies */}
             <div className="proj-entry">
               <div className="proj-title-line">
-                Simon-Says – Classic Memory Game | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a>
+                Freshies Ice Creams – Artisanal Web Platform | <a href="https://freshies-flax.vercel.app/" target="_blank" rel="noopener noreferrer">Live Website</a>
               </div>
               <ul className="proj-bullets">
-                <li>Solely designed and developed a modernized memory game, crafting high-fidelity <strong>CSS animations</strong> from scratch.</li>
-                <li>Implemented low-latency <strong>DOM event handling</strong> for smooth interactions and ensured a fully responsive layout across all viewports.</li>
-                <li><strong>Tech Stack:</strong> JavaScript, HTML5, CSS3, DOM API</li>
+                <li>Designed and engineered a complete responsive <strong>production web application</strong> for an artisanal real-fruit brand in Karnataka.</li>
+                <li>Developed interactive product showcases, ingredient transparency breakdowns, and a dynamic store locator using <strong>Next.js 16 and React 19</strong>.</li>
+                <li>Implemented custom <strong>GSAP scroll choreography</strong> and animation sequences while ensuring high page-load performance and accessibility.</li>
+                <li><strong>Tech Stack:</strong> Next.js 16, TypeScript, React 19, GSAP, Tailwind CSS</li>
               </ul>
             </div>
 
@@ -488,12 +489,12 @@ export default function CVPage() {
 
             <div className="achieve-entry">
               <div className="achieve-title-line">
-                Technical Lead — GeeksforGeeks Campus Club | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                Technical Lead - GeeksforGeeks Campus Body | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
-              <div className="achieve-subtitle">Dr. Ambedkar Institute of Technology, Bengaluru — Present</div>
+              <div className="achieve-subtitle">Dr. Ambedkar Institute of Technology, Bengaluru - Jan 2026 - Jul 2026</div>
               <ul className="achieve-bullets">
-                <li>Leading technical initiatives, organizing coding workshops, mentoring peers in DSA and competitive programming.</li>
-                <li>Driving open-source contributions across the campus community.</li>
+                <li>Responsible for guiding technical direction, organizing coding workshops, and supporting team development initiatives.</li>
+                <li>Orchestrated technical operations as an Organizer for the ASTRAVA Hackathon, successfully managing infrastructure and providing technical support for over 100 participating teams.</li>
               </ul>
             </div>
 
@@ -501,7 +502,7 @@ export default function CVPage() {
               <div className="achieve-title-line">
                 Full-Stack Web Development Certification | Apna College
               </div>
-              <div className="achieve-subtitle">Comprehensive certification — Oct 2025</div>
+              <div className="achieve-subtitle">Comprehensive certification - Oct 2025</div>
               <ul className="achieve-bullets">
                 <li>Covered JavaScript, React, Node.js, Express, MongoDB, HTML5, and CSS3 with hands-on project-based learning.</li>
               </ul>
@@ -509,9 +510,9 @@ export default function CVPage() {
 
             <div className="achieve-entry">
               <div className="achieve-title-line">
-                AWS Educate — Introduction to Generative AI | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                AWS Educate - Introduction to Generative AI | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </div>
-              <div className="achieve-subtitle">Amazon Web Services (AWS) — Sep 2025</div>
+              <div className="achieve-subtitle">Amazon Web Services (AWS) - Sep 2025</div>
               <ul className="achieve-bullets">
                 <li>Training badge covering generative AI concepts, foundation models, and practical use cases for AI/ML on the AWS Cloud platform.</li>
               </ul>

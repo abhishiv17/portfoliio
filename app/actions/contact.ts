@@ -6,7 +6,7 @@ export async function submitContactInquiry(formData: FormData) {
   try {
     const name = formData.get('name') as string
     const email = formData.get('email') as string
-    const projectType = formData.get('projectType') as string
+    const projectType = (formData.get('projectType') as string) || 'General Inquiry / Connect'
     const message = formData.get('message') as string
     const honeypot = formData.get('website_url') as string // honeypot
 
@@ -18,7 +18,7 @@ export async function submitContactInquiry(formData: FormData) {
     }
 
     // 2. Server-side validation
-    if (!name || !email || !projectType || !message) {
+    if (!name || !email || !message) {
       return { success: false, error: 'All fields are required.' }
     }
 
@@ -47,12 +47,12 @@ export async function submitContactInquiry(formData: FormData) {
     const serverTimestamp = new Date().toISOString()
 
     const { error: resendError } = await resend.emails.send({
-      from: `Portfolio Inquiry <${fromEmail}>`,
+      from: `Portfolio Contact <${fromEmail}>`,
       to: toEmail,
       replyTo: email,
-      subject: `New portfolio inquiry — ${projectType} — ${name}`,
+      subject: `New portfolio message [${projectType}] from ${name}`,
       text: `
-NEW PROJECT INQUIRY
+NEW PORTFOLIO MESSAGE / OPPORTUNITY
 
 NAME
 ${name}
@@ -60,7 +60,7 @@ ${name}
 EMAIL
 ${email}
 
-PROJECT TYPE
+OPPORTUNITY TYPE / PURPOSE
 ${projectType}
 
 MESSAGE
