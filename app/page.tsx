@@ -10,13 +10,17 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
+import AudioInteractionManager from '@/components/AudioInteractionManager';
 
 export default function PortfolioPage() {
   const [preloaderDone, setPreloaderDone] = useState(false);
 
   return (
     <>
-      {/* Cinematic Intro Preloader */}
+      {/* Web Audio API Engine */}
+      <AudioInteractionManager />
+
+      {/* Intro sequence loader */}
       <CinematicPreloader onComplete={() => setPreloaderDone(true)} />
 
       {/* Subtle Project-aware Cursor */}

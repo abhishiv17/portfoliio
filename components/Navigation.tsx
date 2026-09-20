@@ -6,6 +6,7 @@ import { CircleMenu, CircleMenuItem } from '@/components/block/circle-menu'
 import { FolderPreview } from '@/components/block/folder-preview'
 import { Briefcase, Cpu, User, Mail, FileText, Github, Linkedin, Twitter } from 'lucide-react'
 import { PROFILE } from '@/data/portfolio'
+import { audioStore } from '@/components/AudioInteractionManager'
 
 const NAV_LINKS = [
   { label: 'Work', href: '#work' },
@@ -25,6 +26,13 @@ const CIRCLE_NAV_ITEMS: CircleMenuItem[] = [
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false)
+  const [isMuted, setIsMuted] = useState(false)
+
+  useEffect(() => {
+    setIsMuted(audioStore.getMuted())
+    const unsub = audioStore.subscribe(setIsMuted)
+    return () => unsub()
+  }, [])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -88,6 +96,34 @@ export default function Navigation() {
               gap: 'var(--space-6)',
             }}
           >
+            {/* Audio Toggle */}
+            <button
+              onClick={() => audioStore.toggleMuted()}
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '10px',
+                letterSpacing: '0.1em',
+                color: 'var(--text-secondary)',
+                backgroundColor: 'transparent',
+                border: '1px solid var(--border-secondary)',
+                padding: '4px 10px',
+                borderRadius: '100px',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--text-primary)'
+                e.currentTarget.style.borderColor = 'var(--text-primary)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'var(--text-secondary)'
+                e.currentTarget.style.borderColor = 'var(--border-secondary)'
+              }}
+              aria-label={isMuted ? "Unmute sounds" : "Mute sounds"}
+            >
+              SOUND: {isMuted ? 'OFF' : 'ON'}
+            </button>
+
             {/* Social Links */}
             <div style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'center' }}>
               <a

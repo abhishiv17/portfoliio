@@ -43,11 +43,11 @@ const MenuItem = ({ item, index, totalItems, isOpen, onSelect }: MenuItemProps) 
     if (item.onClick) {
       item.onClick();
     } else if (item.href) {
-      if (item.href.startsWith('http') || item.href === '/cv') {
+      if (item.href.startsWith('http') || item.href.startsWith('/')) {
         window.location.href = item.href;
       } else {
-        const el = document.querySelector(item.href);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        // Use native browser hash routing for perfect smooth scroll
+        window.location.hash = item.href;
       }
     }
   };
