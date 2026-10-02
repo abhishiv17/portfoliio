@@ -314,7 +314,7 @@ export default function CVPage() {
             <div className="cv-contact-bar">
               <span className="item"><PhoneIcon />+91 8904660785</span>{' '}
               <a className="item link" href="mailto:abhishiv208@gmail.com"><MailIcon />abhishiv208@gmail.com</a>{' '}
-              <a className="item link" href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer"><LinkedInIcon />Abhishek M S</a>{' '}
+              <a className="item link" href="https://www.linkedin.com/in/abhishiv17" target="_blank" rel="noopener noreferrer"><LinkedInIcon />Abhishek M S</a>{' '}
               <a className="item link" href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer"><GitHubIcon />abhishiv17</a>
             </div>
           </div>
