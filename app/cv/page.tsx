@@ -2,6 +2,40 @@
 
 import { useRef } from "react"
 
+/* ── Inline contact icons (FontAwesome-style, as in the LaTeX template) ── */
+const PhoneIcon = () => (
+  <svg className="cv-icon ic-phone" viewBox="0 0 512 512" aria-hidden="true">
+    <path d="M497.4 361.8l-112-48a24 24 0 0 0-28 6.9l-49.6 60.6A370.7 370.7 0 0 1 130.6 204.1l60.6-49.6a23.9 23.9 0 0 0 6.9-28l-48-112A24.2 24.2 0 0 0 122.6.6l-104 24A24 24 0 0 0 0 48c0 256.5 207.9 464 464 464a24 24 0 0 0 23.4-18.6l24-104a24.3 24.3 0 0 0-14-27.6z" />
+  </svg>
+)
+const MailIcon = () => (
+  <svg className="cv-icon ic-mail" viewBox="0 0 512 512" aria-hidden="true">
+    <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" />
+  </svg>
+)
+const LinkedInIcon = () => (
+  <svg className="cv-icon ic-linkedin" viewBox="0 0 448 512" aria-hidden="true">
+    <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
+  </svg>
+)
+const GitHubIcon = () => (
+  <svg className="cv-icon ic-github" viewBox="0 0 16 16" aria-hidden="true">
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+  </svg>
+)
+
+const LiveIcon = () => (
+  <svg className="cv-icon ic-live" viewBox="0 0 496 512" aria-hidden="true">
+    <path d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z" />
+  </svg>
+)
+const YouTubeIcon = () => (
+  <svg className="cv-icon ic-youtube" viewBox="0 0 24 17" aria-hidden="true">
+    <rect width="24" height="17" rx="4" fill="#FF0000" />
+    <path d="M9.6 4.6v7.8l6.8-3.9z" fill="#ffffff" />
+  </svg>
+)
+
 export default function CVPage() {
   const cvRef = useRef<HTMLDivElement>(null)
 
@@ -9,7 +43,16 @@ export default function CVPage() {
     <>
       {/* Print-specific styles - A4, one page, no browser chrome */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Georgia&display=swap');
+        @import url('https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/font/Serif/cmun-serif.css');
+
+        /* Small-caps cut of CMU Serif (lowercase codepoints draw as small capitals),
+           so the name renders like LaTeX's \\scshape but still extracts as plain text for ATS parsers. */
+        @font-face {
+          font-family: 'CMU Serif SC';
+          src: url('/fonts/cmun-serif-sc.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
 
         @page {
           size: A4;
@@ -48,7 +91,7 @@ export default function CVPage() {
           flex-direction: column;
           align-items: center;
           padding: 24px 16px 48px;
-          font-family: 'Times New Roman', Georgia, 'Noto Serif', serif;
+          overflow-x: hidden;
         }
 
         /* ── CV Page: fixed A4, scales to fit viewport ── */
@@ -56,210 +99,116 @@ export default function CVPage() {
           width: 794px;
           height: 1123px;
           overflow: hidden;
-          font-family: 'Times New Roman', Georgia, 'Noto Serif', serif;
+          font-family: 'Computer Modern Serif', 'CMU Serif', 'Latin Modern Roman', 'Times New Roman', serif;
           background: #ffffff;
           color: #000000;
-          padding: 20px 40px 16px;
+          padding: 34px 50px 20px;
           box-sizing: border-box;
           border-radius: 8px;
           box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.05);
           transform-origin: top center;
+          font-size: 13px;
+          line-height: 1.32;
+          font-variant-ligatures: none; /* keep "fi"/"fl" as plain letters for ATS parsers */
         }
+        .cv-page h1, .cv-page h2 { font-family: inherit; }
+        .cv-page a { color: inherit; text-decoration: none; }
+        .cv-page b { font-weight: 700; }
+        .cv-page .link { color: #1f3fd1; }
+
+        .cv-icon {
+          width: 0.95em;
+          height: 0.95em;
+          fill: currentColor;
+          display: inline-block;
+          vertical-align: -0.12em;
+          margin-right: 4px;
+        }
+        .ic-phone { fill: #16a34a; }
+        .ic-mail { fill: #EA4335; }
+        .ic-linkedin { fill: #0A66C2; }
+        .ic-github { fill: #181717; }
+        .ic-live { fill: #0284c7; }
+        .ic-youtube { width: 1.2em; }
 
         /* ── Header ── */
         .cv-header {
           text-align: center;
           margin-bottom: 4px;
         }
-        .cv-name {
-          font-size: 26px;
-          font-weight: 700;
-          color: #000000;
-          letter-spacing: 0.01em;
-          line-height: 1.15;
-          margin: 0;
+        .cv-page .cv-name {
+          font-family: 'CMU Serif SC', 'Computer Modern Serif', serif;
+          font-size: 40px;
+          font-weight: 400;
+          letter-spacing: 0.02em;
+          line-height: 1.05;
+          margin: 0 0 3px;
         }
         .cv-contact-bar {
           display: flex;
           justify-content: center;
           align-items: center;
           flex-wrap: wrap;
-          gap: 2px;
-          font-size: 10.5px;
-          color: #333;
-          margin-top: 4px;
+          font-size: 12.4px;
         }
-        .cv-contact-bar a {
-          color: #1a0dab;
-          text-decoration: underline;
-        }
-        .cv-contact-bar a:hover {
-          color: #0000cc;
-        }
-        .cv-contact-bar .sep {
-          margin: 0 5px;
-          color: #666;
-        }
+        .cv-contact-bar .item { margin: 0 8px; }
+        .cv-contact-bar a.link { text-decoration: underline; text-underline-offset: 2px; }
 
         /* ── Section ── */
         .cv-section {
-          margin-bottom: 4px;
+          margin-bottom: 6px;
         }
         .cv-section-title {
-          font-size: 14px;
+          font-size: 17px;
           font-weight: 700;
-          color: #000;
-          text-transform: uppercase;
-          border-bottom: 1.5px solid #000;
+          border-bottom: 0.8px solid #000;
           padding-bottom: 1px;
-          margin-bottom: 3px;
-          letter-spacing: 0.04em;
+          margin: 0 0 5px;
         }
 
-        /* ── Education ── */
-        .edu-row {
+        /* ── Two-column rows (left / right aligned) ── */
+        .row {
           display: flex;
           justify-content: space-between;
           align-items: baseline;
+          gap: 12px;
         }
-        .edu-institution {
-          font-size: 11.5px;
-          font-weight: 700;
-          color: #000;
-        }
-        .edu-location {
-          font-size: 11.5px;
-          font-weight: 700;
-          color: #000;
-        }
-        .edu-degree {
-          font-size: 11px;
-          font-style: italic;
-          color: #000;
-        }
-        .edu-year {
-          font-size: 11px;
-          font-style: italic;
-          color: #000;
-        }
+        .row-italic { font-style: italic; }
+        .entry { margin-bottom: 6px; }
+        .entry:last-child { margin-bottom: 0; }
+        .entry-title { font-size: 14px; font-weight: 700; }
+        .entry-date { white-space: nowrap; }
+        .entry-date.bold { font-weight: 700; }
 
-        /* ── Skills ── */
-        .skill-row {
-          font-size: 11px;
-          color: #000;
-          margin-bottom: 1px;
-          line-height: 1.3;
-        }
-        .skill-row strong {
-          font-weight: 700;
-        }
+        /* ── Project heading icons ── */
+        .proj-links { display: inline-flex; gap: 6px; vertical-align: -0.05em; }
+        .proj-links .cv-icon { width: 1.05em; height: 1.05em; margin: 0; }
+        .proj-links .ic-youtube { width: 1.3em; }
 
-        /* ── Projects ── */
-        .proj-entry {
-          margin-bottom: 4px;
+        /* ── Bullets ── */
+        .bullets {
+          margin: 2px 0 0;
+          padding-left: 36px;
+          list-style: disc outside;
         }
-        .proj-title-line {
-          font-size: 11.5px;
-          font-weight: 700;
-          color: #000;
+        .bullets li {
           margin-bottom: 1px;
         }
-        .proj-title-line a {
-          color: #1a0dab;
-          text-decoration: underline;
-          font-weight: 700;
-          font-size: 11px;
-        }
-        .proj-title-line a:hover {
-          color: #0000cc;
-        }
-        .proj-subtitle {
-          font-size: 11px;
-          font-style: italic;
-          color: #333;
-          margin-bottom: 1px;
-        }
-        .proj-bullets {
-          margin: 0;
-          padding-left: 20px;
-        }
-        .proj-bullets li {
-          font-size: 11px;
-          color: #000;
-          line-height: 1.3;
-          margin-bottom: 0px;
-        }
-        .proj-bullets li strong {
-          font-weight: 700;
-        }
+        .bullets.spaced li { margin-bottom: 5px; }
 
-        /* ── Achievements ── */
-        .achieve-entry {
-          margin-bottom: 3px;
+        /* ── Skills table ── */
+        .skills-table {
+          margin-left: 16px;
+          border-collapse: collapse;
         }
-        .achieve-title-line {
-          font-size: 11.5px;
+        .skills-table td {
+          padding: 0;
+          vertical-align: top;
+        }
+        .skills-table td:first-child {
           font-weight: 700;
-          color: #000;
-          margin-bottom: 1px;
-        }
-        .achieve-title-line a {
-          color: #1a0dab;
-          text-decoration: underline;
-          font-weight: 700;
-          font-size: 11px;
-        }
-        .achieve-subtitle {
-          font-size: 11px;
-          font-style: italic;
-          color: #333;
-          margin-bottom: 1px;
-        }
-        .achieve-bullets {
-          margin: 0;
-          padding-left: 20px;
-        }
-        .achieve-bullets li {
-          font-size: 11px;
-          color: #000;
-          line-height: 1.3;
-          margin-bottom: 0px;
-        }
-
-        /* ── Experience ── */
-        .exp-entry {
-          margin-bottom: 5px;
-        }
-        .exp-title-line {
-          display: flex;
-          justify-content: space-between;
-          align-items: baseline;
-        }
-        .exp-title-name {
-          font-size: 11.5px;
-          font-weight: 700;
-          color: #000;
-        }
-        .exp-title-date {
-          font-size: 11px;
-          font-style: italic;
-          color: #000;
-        }
-        .exp-org {
-          font-size: 11px;
-          font-style: italic;
-          color: #333;
-          margin-bottom: 2px;
-        }
-        .exp-bullets {
-          margin: 0;
-          padding-left: 20px;
-        }
-        .exp-bullets li {
-          font-size: 11px;
-          color: #000;
-          line-height: 1.3;
-          margin-bottom: 1px;
+          white-space: nowrap;
+          padding-right: 10px;
         }
 
         /* ── Action bar ── */
@@ -268,6 +217,7 @@ export default function CVPage() {
           padding: 16px 0 20px;
           width: 100%;
           max-width: 794px;
+          font-family: 'Inter', system-ui, sans-serif;
         }
         .action-row {
           display: flex;
@@ -315,10 +265,6 @@ export default function CVPage() {
         }
 
         /* ── Responsive scaling ── */
-        .cv-wrapper {
-          overflow-x: hidden;
-        }
-
         @media screen and (max-width: 830px) {
           .cv-page {
             --scale: calc((100vw - 32px) / 794);
@@ -366,157 +312,149 @@ export default function CVPage() {
           <div className="cv-header">
             <h1 className="cv-name">Abhishek M Shivanagoudar</h1>
             <div className="cv-contact-bar">
-              <span>Bangalore, Karnataka</span>
-              <span className="sep">|</span>
-              <span>Contact No: 8904660785</span>
-              <span className="sep">|</span>
-              <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <span className="sep">|</span>
-              <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">Github</a>
-              <span className="sep">|</span>
-              <a href="mailto:abhishiv208@gmail.com">abhishiv208@gmail.com</a>
+              <span className="item"><PhoneIcon />+91 8904660785</span>{' '}
+              <a className="item link" href="mailto:abhishiv208@gmail.com"><MailIcon />abhishiv208@gmail.com</a>{' '}
+              <a className="item link" href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer"><LinkedInIcon />Abhishek M S</a>{' '}
+              <a className="item link" href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer"><GitHubIcon />abhishiv17</a>
             </div>
           </div>
 
           {/* ──── EDUCATION ──── */}
           <div className="cv-section">
-            <div className="cv-section-title">EDUCATION</div>
-            <div className="edu-row">
-              <span className="edu-institution">Dr. Ambedkar Institute of Technology</span>
-              <span className="edu-location">Bangalore, Karnataka</span>
-            </div>
-            <div className="edu-row">
-              <span className="edu-degree">BE in Computer Science and Engineering (Current CGPA: 9.0)</span>
-              <span className="edu-year">2024–2028</span>
-            </div>
-          </div>
-
-          {/* ──── SKILL SET ──── */}
-          <div className="cv-section">
-            <div className="cv-section-title">SKILL SET</div>
-            <div className="skill-row">
-              <strong>Web Development (Frontend):</strong> Next.js, React, TypeScript, Tailwind CSS, HTML5, CSS3, Framer Motion, Shadcn UI
-            </div>
-            <div className="skill-row">
-              <strong>Web Development (Backend):</strong> Node.js, Express
-            </div>
-            <div className="skill-row">
-              <strong>Languages:</strong> Java, Python, TypeScript, JavaScript, C
-            </div>
-            <div className="skill-row">
-              <strong>Databases:</strong> PostgreSQL, Supabase, MongoDB
-            </div>
-            <div className="skill-row">
-              <strong>Tools &amp; DevOps:</strong> Git, GitHub, Docker, Postman, CI/CD
+            <h2 className="cv-section-title">Education</h2>
+            <div className="entry">
+              <div className="row">
+                <span className="entry-title">Dr. Ambedkar Institute of Technology, Bengaluru</span>
+                <span className="entry-date">2024 – 2028</span>
+              </div>
+              <div className="row row-italic">
+                <span>Bachelor of Engineering in Computer Science and Engineering</span>
+                <span>CGPA: <b>9.0/10</b></span>
+              </div>
             </div>
           </div>
 
           {/* ──── PROJECTS ──── */}
           <div className="cv-section">
-            <div className="cv-section-title">PROJECTS</div>
+            <h2 className="cv-section-title">Projects</h2>
 
-            {/* Blind-Run */}
-            <div className="proj-entry">
-              <div className="proj-title-line">
-                Blind-Run – Asymmetric Multiplayer Game | <a href="https://github.com/abhishiv17/Blind-Run" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://blindrun.vercel.app/" target="_blank" rel="noopener noreferrer">Live Game</a>
+            {/* CampusEvac */}
+            <div className="entry">
+              <div className="row">
+                <span>
+                  <span className="entry-title">CampusEvac – Fire Evacuation Training Simulator</span>{' | '}
+                  <span className="proj-links">
+                    <a href="https://github.com/AfreenInnovates/campus" target="_blank" rel="noopener noreferrer" title="GitHub"><GitHubIcon /></a>
+                    <a href="https://main.d3skpx6qxc85hh.amplifyapp.com/" target="_blank" rel="noopener noreferrer" title="Live"><LiveIcon /></a>
+                    <a href="https://youtu.be/FhgTfCz0ou8" target="_blank" rel="noopener noreferrer" title="Demo video"><YouTubeIcon /></a>
+                  </span>
+                </span>
+                <span className="entry-date bold">Best UI – WeMakeDevs × AWS</span>
               </div>
-              <ul className="proj-bullets">
-                <li>Engineered a real-time asymmetric multiplayer heist game using <strong>React Three Fiber</strong> and <strong>Rapier physics</strong>.</li>
-                <li>Architected authoritative state synchronization via <strong>Colyseus</strong> to handle complex role-based visibility across devices.</li>
-                <li>Implemented deterministic multiplayer room logic and unified cross-device responsive controls.</li>
-                <li><strong>Tech Stack:</strong> React Three Fiber, Rapier, Colyseus, TypeScript, React</li>
+              <div className="row-italic">Next.js, TypeScript, React Three Fiber, Zustand, AWS (AppSync, DynamoDB, Polly, SES, CDK, Amplify)</div>
+              <ul className="bullets">
+                <li>Won <b>Best UI</b> at the <b>WeMakeDevs × AWS Hackathon</b> for a two-player, browser-based fire-drill simulator: an evacuee navigates a smoke-filled building in <b>first-person 3D</b> while a warden guides them from an overhead view.</li>
+                <li>Designed a <b>dual-channel real-time architecture</b> on <b>AWS AppSync Events</b>: an ephemeral <b>10 Hz</b> position stream plus a persisted game channel logged to <b>Amazon DynamoDB</b> for audit trails and <b>replay verification</b>.</li>
+                <li><b>Automated</b> post-drill <b>performance reports</b> emailed via <b>Amazon SES</b> and live warden narration with <b>Amazon Polly</b>; provisioned infrastructure as code with <b>AWS CDK</b> and <b>deployed</b> on <b>Amplify</b>.</li>
               </ul>
             </div>
 
             {/* SkillSwap */}
-            <div className="proj-entry">
-              <div className="proj-title-line">
-                SkillSwap – Peer-to-Peer Skill Exchange Platform | <a href="https://github.com/abhishiv17/SkillSwapP" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://skill-swap-p.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
+            <div className="entry">
+              <div className="row">
+                <span>
+                  <span className="entry-title">SkillSwap – Peer-to-Peer Skill Exchange Platform</span>{' | '}
+                  <span className="proj-links">
+                    <a href="https://github.com/abhishiv17/SkillSwapP" target="_blank" rel="noopener noreferrer" title="GitHub"><GitHubIcon /></a>
+                    <a href="https://skill-swap-p.vercel.app/" target="_blank" rel="noopener noreferrer" title="Live"><LiveIcon /></a>
+                  </span>
+                </span>
+                <span className="entry-date bold">2025</span>
               </div>
-              <ul className="proj-bullets">
-                <li>Architected the entire full-stack infrastructure from scratch, leading all major <strong>technical decisions</strong> and database schema design.</li>
-                <li>Engineered <strong>AI-powered skill matching</strong> using vector-based semantic search and built a secure credit escrow system.</li>
-                <li>Implemented real-time session scheduling with live <strong>WebSocket notifications</strong> and managed end-to-end feature delivery.</li>
-                <li><strong>Tech Stack:</strong> Next.js, TypeScript, Supabase, PostgreSQL, Tailwind CSS, AI/ML</li>
+              <div className="row-italic">Next.js, TypeScript, PostgreSQL, Supabase, SQL, REST APIs, WebSockets, Vector Search</div>
+              <ul className="bullets">
+                <li>Architected the full-stack platform from scratch as <b>lead engineer</b>, designing the <b>relational database schema</b> and <b>SQL</b> queries in <b>PostgreSQL</b> and owning all major technical decisions.</li>
+                <li>Designed <b>REST APIs</b> for skill matching powered by <b>vector-based semantic search</b>, pairing learners and mentors by meaning rather than exact keyword overlap.</li>
+                <li>Built a secure <b>credit escrow system</b> for session payments and real-time scheduling with live <b>WebSocket</b> notifications, delivering features end-to-end.</li>
               </ul>
             </div>
 
             {/* Control-Grid */}
-            <div className="proj-entry">
-              <div className="proj-title-line">
-                Control-Grid – Real-Time Industrial Monitoring Dashboard | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a> | <a href="https://code-ninjas-hackzion.vercel.app/" target="_blank" rel="noopener noreferrer">MVP Link</a>
+            <div className="entry">
+              <div className="row">
+                <span>
+                  <span className="entry-title">Control-Grid – Real-Time Industrial Monitoring Dashboard</span>{' | '}
+                  <span className="proj-links">
+                    <a href="https://github.com/abhishiv17/Control-Grid" target="_blank" rel="noopener noreferrer" title="GitHub"><GitHubIcon /></a>
+                    <a href="https://code-ninjas-hackzion.vercel.app/" target="_blank" rel="noopener noreferrer" title="Live"><LiveIcon /></a>
+                  </span>
+                </span>
+                <span className="entry-date bold">2025</span>
               </div>
-              <ul className="proj-bullets">
-                <li>Developed the entire real-time monitoring dashboard under tight <strong>hackathon deadlines</strong>, delivering a polished product on time.</li>
-                <li>Implemented live <strong>WebSocket data streaming</strong> pipelines and engineered responsive grid-based layouts for mission-critical oversight.</li>
-                <li>Coordinated with teammates on architecture decisions and integration testing under time constraints.</li>
-                <li><strong>Tech Stack:</strong> TypeScript, React, WebSocket, SASS</li>
-              </ul>
-            </div>
-
-            {/* TripNest */}
-            <div className="proj-entry">
-              <div className="proj-title-line">
-                TripNest – Hospitality &amp; Travel Platform | <a href="https://github.com/abhishiv17" target="_blank" rel="noopener noreferrer">GitHub</a>
-              </div>
-              <ul className="proj-bullets">
-                <li>Independently owned the <strong>full development lifecycle</strong> of a hospitality and travel management platform.</li>
-                <li>Engineered <strong>RESTful APIs</strong> with Express, implemented secure user authentication, and built a responsive booking flow with Redux.</li>
-                <li>Optimized <strong>MongoDB queries</strong> for high-availability performance and scalable data access patterns.</li>
-                <li><strong>Tech Stack:</strong> JavaScript, Node.js, Express, MongoDB, Redux</li>
+              <div className="row-italic">TypeScript, React, WebSockets, SASS</div>
+              <ul className="bullets">
+                <li>Developed a mission-critical <b>industrial telemetry dashboard</b> within a <b>hackathon sprint</b>, shipping a polished, demo-ready product on deadline.</li>
+                <li>Implemented low-latency <b>WebSocket streaming pipelines</b> feeding high-density, responsive grid layouts; <b>debugged and troubleshot</b> connection drops to add resilient <b>error recovery</b>.</li>
+                <li>Wrote <b>unit tests</b> and coordinated <b>integration testing</b> and architecture decisions across the team under tight time constraints.</li>
               </ul>
             </div>
 
             {/* Freshies */}
-            <div className="proj-entry">
-              <div className="proj-title-line">
-                Freshies Ice Creams – Artisanal Web Platform | <a href="https://freshies-flax.vercel.app/" target="_blank" rel="noopener noreferrer">Live Website</a>
+            <div className="entry">
+              <div className="row">
+                <span>
+                  <span className="entry-title">Freshies Ice Creams – Artisanal Brand Web Platform</span>{' | '}
+                  <span className="proj-links">
+                    <a href="https://freshies-flax.vercel.app/" target="_blank" rel="noopener noreferrer" title="Live"><LiveIcon /></a>
+                  </span>
+                </span>
               </div>
-              <ul className="proj-bullets">
-                <li>Designed and engineered a complete responsive <strong>production web application</strong> for an artisanal real-fruit brand in Karnataka.</li>
-                <li>Developed interactive product showcases, ingredient transparency breakdowns, and a dynamic store locator using <strong>Next.js 16 and React 19</strong>.</li>
-                <li>Implemented custom <strong>GSAP scroll choreography</strong> and animation sequences while ensuring high page-load performance and accessibility.</li>
-                <li><strong>Tech Stack:</strong> Next.js 16, TypeScript, React 19, GSAP, Tailwind CSS</li>
+              <div className="row-italic">Next.js, React, TypeScript, GSAP, Tailwind CSS</div>
+              <ul className="bullets">
+                <li>Designed, built, and <b>deployed</b> a responsive <b>production web application</b> for an artisanal real-fruit ice cream brand in Karnataka.</li>
+                <li>Built interactive product showcases, ingredient-transparency breakdowns, and a dynamic <b>store locator</b>, with custom <b>GSAP</b> scroll animations that preserve fast page loads and <b>accessibility</b>.</li>
               </ul>
             </div>
-
-
           </div>
 
-          {/* ──── KEY ACHIEVEMENTS ──── */}
+          {/* ──── SKILLS ──── */}
           <div className="cv-section">
-            <div className="cv-section-title">KEY ACHIEVEMENTS</div>
+            <h2 className="cv-section-title">Skills</h2>
+            <table className="skills-table">
+              <tbody>
+                <tr>
+                  <td>Programming Languages</td>
+                  <td><b>Adept at:</b> JavaScript, Java, C, SQL; <b>Familiar with:</b> Python</td>
+                </tr>
+                <tr>
+                  <td>Web &amp; Frameworks</td>
+                  <td>React, Next.js, Node.js, Express, REST APIs, WebSockets, Tailwind CSS</td>
+                </tr>
+                <tr>
+                  <td>Databases &amp; Cloud</td>
+                  <td>PostgreSQL, MongoDB, Supabase, AWS (DynamoDB, AppSync, SES, CDK, Amplify)</td>
+                </tr>
+                <tr>
+                  <td>Tools</td>
+                  <td>Git/GitHub (version control), Docker, Postman, CI/CD</td>
+                </tr>
+                <tr>
+                  <td>Relevant Courses</td>
+                  <td>Data Structures &amp; Algorithms, Object Oriented Programming (Java), Database Management Systems, Operating Systems</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-            <div className="achieve-entry">
-              <div className="achieve-title-line">
-                Technical Lead - GeeksforGeeks Campus Body | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              </div>
-              <div className="achieve-subtitle">Dr. Ambedkar Institute of Technology, Bengaluru - Jan 2026 - Jul 2026</div>
-              <ul className="achieve-bullets">
-                <li>Responsible for guiding technical direction, organizing coding workshops, and supporting team development initiatives.</li>
-                <li>Orchestrated technical operations as an Organizer for the ASTRAVA Hackathon, successfully managing infrastructure and providing technical support for over 100 participating teams.</li>
-              </ul>
-            </div>
-
-            <div className="achieve-entry">
-              <div className="achieve-title-line">
-                Full-Stack Web Development Certification | Apna College
-              </div>
-              <div className="achieve-subtitle">Comprehensive certification - Oct 2025</div>
-              <ul className="achieve-bullets">
-                <li>Covered JavaScript, React, Node.js, Express, MongoDB, HTML5, and CSS3 with hands-on project-based learning.</li>
-              </ul>
-            </div>
-
-            <div className="achieve-entry">
-              <div className="achieve-title-line">
-                AWS Educate - Introduction to Generative AI | <a href="https://www.linkedin.com/in/abhishek-m-s-5441ab322" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              </div>
-              <div className="achieve-subtitle">Amazon Web Services (AWS) - Sep 2025</div>
-              <ul className="achieve-bullets">
-                <li>Training badge covering generative AI concepts, foundation models, and practical use cases for AI/ML on the AWS Cloud platform.</li>
-              </ul>
-            </div>
+          {/* ──── ACHIEVEMENTS ──── */}
+          <div className="cv-section">
+            <h2 className="cv-section-title">Achievements &amp; Extracurricular</h2>
+            <ul className="bullets spaced">
+              <li><b>WeMakeDevs × AWS Hackathon:</b> Won the <b>Best UI</b> award for <a className="link" href="https://youtu.be/FhgTfCz0ou8" target="_blank" rel="noopener noreferrer">CampusEvac</a>, a real-time multiplayer fire-evacuation training simulator.</li>
+              <li><b>Technical Lead, GeeksforGeeks Campus Body (Jan 2026 – Jul 2026):</b> Guided technical direction for the chapter and organized coding workshops for students at Dr. AIT.</li>
+              <li><b>ASTRAVA Hackathon:</b> Served as an organizer, managing technical infrastructure and support for <b>100+ participating teams</b>.</li>
+              <li><b>Certifications:</b> Full-Stack Web Development – Apna College (Oct 2025); AWS Educate – Introduction to Generative AI (Sep 2025).</li>
+            </ul>
           </div>
 
         </div>
