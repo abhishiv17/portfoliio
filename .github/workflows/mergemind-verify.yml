@@ -1,0 +1,40 @@
+# MergeMind: untrusted PR checks.
+# Runs contributor code with a read-only token and no secrets. MergeMind reads the result of the
+# `tests` job as a check run; it never runs PR code itself.
+# This repo has no test suite, so `tests` type-checks and builds the site, and there is no
+# `regression` job (pr.require_regression_test is false in .github/mergemind.yml).
+name: mergemind-verify
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  # the default branch is checked after every merge; MergeMind proposes a revert if this fails
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mergemind-verify-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - name: Install
+        run: npm ci --ignore-scripts
+      - name: Type-check
+        run: npx tsc --noEmit
+      - name: Build
+        run: npx next build

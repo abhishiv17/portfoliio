@@ -1,0 +1,15 @@
+autonomy: merge                   # observe | suggest | invite | merge (merges only after /mergemind approve)
+maintainers: [abhishiv17]
+access:
+  mode: fork                      # contributors fork and open a PR; they never get write access
+  ttl: 3d
+  checkin_at: 50%
+  min_account_age: 30d
+pr:
+  require_regression_test: false  # no test suite here; the `tests` check type-checks and builds the site
+  allow_out_of_scope: flag
+  merge_method: squash
+  ci_timeout: 30m
+  post_merge_watch: 30m
+guard:
+  sensitive_paths: [".env*", "**/.env*", "**/*.pem", "**/*.key", "**/secrets/**", ".vercel/**", ".claude/**"]
